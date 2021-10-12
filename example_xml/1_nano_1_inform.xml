@@ -1,0 +1,1719 @@
+<?xml version="1.0"?>
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cwmp="urn:dslforum-org:cwmp-1-0">
+	<soap-env:Header>
+		<cwmp:ID soap-env:mustUnderstand="1">2</cwmp:ID>
+	</soap-env:Header>
+	<soap-env:Body>
+		<cwmp:Inform>
+			<DeviceId>
+				<Manufacturer>ip.access Ltd</Manufacturer>
+				<OUI>000295</OUI>
+				<ProductClass></ProductClass>
+				<SerialNumber>0000123456</SerialNumber>
+			</DeviceId>
+			<Event soap-enc:arrayType="cwmp:EventStruct[2]">
+				<EventStruct>
+					<EventCode>4 VALUE CHANGE</EventCode>
+					<CommandKey></CommandKey>
+				</EventStruct>
+				<EventStruct>
+					<EventCode>0 BOOTSTRAP</EventCode>
+					<CommandKey></CommandKey>
+				</EventStruct>
+			</Event>
+			<MaxEnvelopes>1</MaxEnvelopes>
+			<CurrentTime>2021-09-22T23:46:49Z</CurrentTime>
+			<RetryCount>2</RetryCount>
+			<ParameterList soap-enc:arrayType="cwmp:ParameterValueStruct[422]">
+				<ParameterValueStruct>
+					<Name>Device.ManagementServer.ParameterKey</Name>
+					<Value xsi:type="xsd:string">0</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarmNumberOfEntries</Name>
+					<Value xsi:type="xsd:unsignedInt">47</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.1.EventType</Name>
+					<Value xsi:type="xsd:string">PROCESSING ERROR ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.1.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">No Oscillator Synchronisation</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.1.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Major</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.1.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Clock Synchronization Problem</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.2.EventType</Name>
+					<Value xsi:type="xsd:string">PROCESSING ERROR ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.2.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">No Oscillator Synchronisation</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.2.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Cleared</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.2.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Clock Synchronization Problem</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.3.EventType</Name>
+					<Value xsi:type="xsd:string">PROCESSING ERROR ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.3.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">NTP Unable to Synchronise Oscillator</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.3.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Major</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.3.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Clock Synchronization Problem</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.4.EventType</Name>
+					<Value xsi:type="xsd:string">PROCESSING ERROR ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.4.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">NTP Unable to Synchronise Oscillator</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.4.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Cleared</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.4.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Clock Synchronization Problem</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.5.EventType</Name>
+					<Value xsi:type="xsd:string">COMMUNICATIONS ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.5.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">NWL Unable to Synchronise Oscillator</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.5.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Major</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.5.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Clock Synchronization Problem</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.6.EventType</Name>
+					<Value xsi:type="xsd:string">COMMUNICATIONS ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.6.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">NWL Unable to Synchronise Oscillator</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.6.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Cleared</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.6.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Clock Synchronization Problem</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.7.EventType</Name>
+					<Value xsi:type="xsd:string">EQUIPMENT ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.7.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">3G AP TX OPLL Failure</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.7.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Critical</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.7.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Clock Synchronization Problem</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.8.EventType</Name>
+					<Value xsi:type="xsd:string">EQUIPMENT ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.8.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">3G AP TX OPLL Failure</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.8.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Cleared</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.8.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Clock Synchronization Problem</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.9.EventType</Name>
+					<Value xsi:type="xsd:string">ENVIRONMENTAL ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.9.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">3G AP Over Temperature</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.9.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Major</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.9.ProbableCause</Name>
+					<Value xsi:type="xsd:string">High Temperature</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.10.EventType</Name>
+					<Value xsi:type="xsd:string">ENVIRONMENTAL ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.10.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">3G AP Over Temperature</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.10.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Minor</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.10.ProbableCause</Name>
+					<Value xsi:type="xsd:string">High Temperature</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.11.EventType</Name>
+					<Value xsi:type="xsd:string">ENVIRONMENTAL ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.11.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">3G AP Over Temperature</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.11.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Cleared</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.11.ProbableCause</Name>
+					<Value xsi:type="xsd:string">High Temperature</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.12.EventType</Name>
+					<Value xsi:type="xsd:string">ENVIRONMENTAL ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.12.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">3G AP Under Temperature</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.12.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Major</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.12.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Low Temperature</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.13.EventType</Name>
+					<Value xsi:type="xsd:string">ENVIRONMENTAL ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.13.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">3G AP Under Temperature</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.13.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Cleared</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.13.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Low Temperature</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.14.EventType</Name>
+					<Value xsi:type="xsd:string">EQUIPMENT ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.14.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">Oscillator Frequency Correction Outside Range</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.14.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Critical</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.14.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Clock Synchronization Problem</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.15.EventType</Name>
+					<Value xsi:type="xsd:string">EQUIPMENT ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.15.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">Oscillator Frequency Correction Outside Range</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.15.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Cleared</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.15.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Clock Synchronization Problem</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.16.EventType</Name>
+					<Value xsi:type="xsd:string">PROCESSING ERROR ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.16.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">Internal SW Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.16.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Critical</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.16.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Software Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.17.EventType</Name>
+					<Value xsi:type="xsd:string">PROCESSING ERROR ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.17.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">Internal SW Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.17.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Warning</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.17.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Software Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.18.EventType</Name>
+					<Value xsi:type="xsd:string">ENVIRONMENTAL ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.18.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">No Free Frequency - Scrambling Code Pair</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.18.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Critical</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.18.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Underlying Resource Unavailable</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.19.EventType</Name>
+					<Value xsi:type="xsd:string">ENVIRONMENTAL ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.19.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">No Free Frequency - Scrambling Code Pair</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.19.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Cleared</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.19.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Underlying Resource Unavailable</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.20.EventType</Name>
+					<Value xsi:type="xsd:string">ENVIRONMENTAL ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.20.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">No Free LAC - RAC Pair</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.20.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Critical</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.20.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Underlying Resource Unavailable</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.21.EventType</Name>
+					<Value xsi:type="xsd:string">ENVIRONMENTAL ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.21.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">No Free LAC - RAC Pair</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.21.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Cleared</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.21.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Underlying Resource Unavailable</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.22.EventType</Name>
+					<Value xsi:type="xsd:string">QUALITY OF SERVICE ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.22.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">GSM Co-channel Interference</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.22.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Minor</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.22.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Degraded Signal</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.23.EventType</Name>
+					<Value xsi:type="xsd:string">QUALITY OF SERVICE ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.23.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">GSM Co-channel Interference</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.23.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Cleared</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.23.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Degraded Signal</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.24.EventType</Name>
+					<Value xsi:type="xsd:string">COMMUNICATIONS ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.24.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">Primary Configuration Unusable</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.24.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Major</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.24.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Configuration Or Customizing Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.25.EventType</Name>
+					<Value xsi:type="xsd:string">COMMUNICATIONS ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.25.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">Primary Configuration Unusable</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.25.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Cleared</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.25.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Configuration Or Customizing Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.26.EventType</Name>
+					<Value xsi:type="xsd:string">COMMUNICATIONS ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.26.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">Link Failure</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.26.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Critical</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.26.ProbableCause</Name>
+					<Value xsi:type="xsd:string">NanoBTS Interface Failure</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.27.EventType</Name>
+					<Value xsi:type="xsd:string">COMMUNICATIONS ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.27.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">Link Failure</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.27.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Cleared</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.27.ProbableCause</Name>
+					<Value xsi:type="xsd:string">NanoBTS Interface Failure</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.28.EventType</Name>
+					<Value xsi:type="xsd:string">SECURITY SERVICE OR MECHANISM VIOLATION</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.28.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">CRL Expiry</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.28.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Major</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.28.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Denial Of Service</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.29.EventType</Name>
+					<Value xsi:type="xsd:string">SECURITY SERVICE OR MECHANISM VIOLATION</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.29.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">CRL Expiry</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.29.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Cleared</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.29.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Denial Of Service</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.30.EventType</Name>
+					<Value xsi:type="xsd:string">PROCESSING ERROR ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.30.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">Download Failure Alarm</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.30.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Warning</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.30.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Software Download Failure</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.31.EventType</Name>
+					<Value xsi:type="xsd:string">PROCESSING ERROR ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.31.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">Installed Software Image Validation</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.31.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Critical</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.31.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Information Modification Detected</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.32.EventType</Name>
+					<Value xsi:type="xsd:string">SECURITY SERVICE OR MECHANISM VIOLATION</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.32.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">Security Certificate Validation</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.32.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Warning</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.32.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Information Modification Detected</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.33.EventType</Name>
+					<Value xsi:type="xsd:string">SECURITY SERVICE OR MECHANISM VIOLATION</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.33.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">SSL Connection Failure</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.33.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Critical</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.33.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Communications Protocol Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.34.EventType</Name>
+					<Value xsi:type="xsd:string">COMMUNICATIONS ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.34.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">HNB-GW Initial Contact Failure</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.34.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Critical</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.34.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Communications Protocol Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.35.EventType</Name>
+					<Value xsi:type="xsd:string">COMMUNICATIONS ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.35.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">HNB-GW Initial Contact Failure</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.35.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Cleared</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.35.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Communications Protocol Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.36.EventType</Name>
+					<Value xsi:type="xsd:string">COMMUNICATIONS ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.36.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">IPsec Client Authentication Failure</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.36.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Critical</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.36.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Communications Protocol Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.37.EventType</Name>
+					<Value xsi:type="xsd:string">COMMUNICATIONS ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.37.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">IPsec Client Authentication Failure</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.37.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Cleared</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.37.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Communications Protocol Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.38.EventType</Name>
+					<Value xsi:type="xsd:string">COMMUNICATIONS ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.38.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">IPsec Dead Peer Detected</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.38.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Critical</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.38.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Communications Protocol Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.39.EventType</Name>
+					<Value xsi:type="xsd:string">COMMUNICATIONS ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.39.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">IPsec Dead Peer Detected</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.39.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Cleared</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.39.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Communications Protocol Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.40.EventType</Name>
+					<Value xsi:type="xsd:string">COMMUNICATIONS ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.40.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">IPsec Establishment Failure</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.40.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Critical</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.40.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Communications Protocol Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.41.EventType</Name>
+					<Value xsi:type="xsd:string">COMMUNICATIONS ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.41.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">IPsec Establishment Failure</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.41.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Cleared</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.41.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Communications Protocol Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.42.EventType</Name>
+					<Value xsi:type="xsd:string">COMMUNICATIONS ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.42.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">IPsec Gateway Authentication Failure</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.42.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Critical</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.42.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Communications Protocol Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.43.EventType</Name>
+					<Value xsi:type="xsd:string">COMMUNICATIONS ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.43.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">IPsec Gateway Authentication Failure</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.43.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Cleared</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.43.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Communications Protocol Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.44.EventType</Name>
+					<Value xsi:type="xsd:string">COMMUNICATIONS ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.44.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">IPsec Initial Contact Failure</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.44.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Critical</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.44.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Communications Protocol Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.45.EventType</Name>
+					<Value xsi:type="xsd:string">COMMUNICATIONS ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.45.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">IPsec Initial Contact Failure</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.45.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Cleared</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.45.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Communications Protocol Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.46.EventType</Name>
+					<Value xsi:type="xsd:string">COMMUNICATIONS ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.46.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">IPsec Response Failure</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.46.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Critical</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.46.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Communications Protocol Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.47.EventType</Name>
+					<Value xsi:type="xsd:string">COMMUNICATIONS ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.47.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">IPsec Response Failure</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.47.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Cleared</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.SupportedAlarm.47.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Communications Protocol Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.MaxCurrentAlarmEntries</Name>
+					<Value xsi:type="xsd:unsignedInt">20</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEventNumberOfEntries</Name>
+					<Value xsi:type="xsd:unsignedInt">5</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.1.EventTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:11Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEventNumberOfEntries</Name>
+					<Value xsi:type="xsd:unsignedInt">5</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.1.EventTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:11Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_FAPSoftware.DownloadStatus</Name>
+					<Value xsi:type="xsd:string">AP_SYS_DLD_NOT_STARTED</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.SoftwareVersion</Name>
+					<Value xsi:type="xsd:string">Kernel: 240_002 231.0, Filesys: 240K004 634.15_signed</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DHCPv4.Client.1.DHCPServer</Name>
+					<Value xsi:type="xsd:string">10.0.11.1</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DHCPv4.Client.1.DNSServers</Name>
+					<Value xsi:type="xsd:string">10.0.11.1</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DHCPv4.Client.1.IPAddress</Name>
+					<Value xsi:type="xsd:string">10.0.11.175</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DHCPv4.Client.1.LeaseTimeRemaining</Name>
+					<Value xsi:type="xsd:signedInt">7200</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DHCPv4.ClientNumberOfEntries</Name>
+					<Value xsi:type="xsd:unsignedInt">1</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.IP.Interface.1.Name</Name>
+					<Value xsi:type="xsd:string">3GAP-External</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.IP.Interface.1.IPv4Address.1.IPAddress</Name>
+					<Value xsi:type="xsd:string">10.0.11.175</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Ethernet.Interface.1.MACAddress</Name>
+					<Value xsi:type="xsd:string">00:02:95:12:34:56</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Ethernet.Interface.1.Name</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.IPsec.X_000295_DefaultIPsecEnable</Name>
+					<Value xsi:type="xsd:boolean">false</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Services.FAPService.1.FAPControl.UMTS.Gateway.X_000295_DefaultSecGWServer</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.ManagementServer.X_000295_DefaultMgmtServerURL</Name>
+					<Value xsi:type="xsd:string">http://10.0.11.184/acs</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Time.X_000295_DefaultNTPServer</Name>
+					<Value xsi:type="xsd:string">0.pool.ntp.org</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.SerialNumber</Name>
+					<Value xsi:type="xsd:string">0000123456</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.ProductClass</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.HardwareVersion</Name>
+					<Value xsi:type="xsd:string">239B030-B</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.ModelName</Name>
+					<Value xsi:type="xsd:string">NANO-E16</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.Manufacturer</Name>
+					<Value xsi:type="xsd:string">ip.access Ltd</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Services.FAPService.1.Capabilities.GPSEquipped</Name>
+					<Value xsi:type="xsd:boolean">false</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.UpTime</Name>
+					<Value xsi:type="xsd:unsignedInt">95</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistoryNumberOfEntries</Name>
+					<Value xsi:type="xsd:unsignedInt">20</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistoryCurrentIndex</Name>
+					<Value xsi:type="xsd:unsignedInt">19</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_LastRebootCause</Name>
+					<Value xsi:type="xsd:string">NON CLEAN COLD SHUTDOWN</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.1.BankIndex</Name>
+					<Value xsi:type="xsd:unsignedInt">1</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.1.RebootCauseAdditionalInfo</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.1.ShutdownTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:01Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.1.RebootCauseInfo</Name>
+					<Value xsi:type="xsd:string">NON CLEAN COLD SHUTDOWN</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.2.BankIndex</Name>
+					<Value xsi:type="xsd:unsignedInt">1</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.2.RebootCauseAdditionalInfo</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.2.KernelUptime</Name>
+					<Value xsi:type="xsd:unsignedInt">27</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.2.ShutdownTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:06Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.2.RebootCauseInfo</Name>
+					<Value xsi:type="xsd:string">USER REINITIALISE</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.3.BankIndex</Name>
+					<Value xsi:type="xsd:unsignedInt">1</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.3.RebootCauseAdditionalInfo</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.3.ShutdownTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:01Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.3.RebootCauseInfo</Name>
+					<Value xsi:type="xsd:string">NON CLEAN COLD SHUTDOWN</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.4.RebootCauseAdditionalInfo</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.4.KernelUptime</Name>
+					<Value xsi:type="xsd:unsignedInt">23</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.4.ShutdownTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:03Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.4.RebootCauseInfo</Name>
+					<Value xsi:type="xsd:string">USER REINITIALISE</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.5.RebootCauseAdditionalInfo</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.5.ShutdownTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:01Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.5.RebootCauseInfo</Name>
+					<Value xsi:type="xsd:string">NON CLEAN COLD SHUTDOWN</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.6.RebootCauseAdditionalInfo</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.6.KernelUptime</Name>
+					<Value xsi:type="xsd:unsignedInt">26</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.6.ShutdownTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:07Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.6.RebootCauseInfo</Name>
+					<Value xsi:type="xsd:string">USER FACTORY RESTORE</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.7.RebootCauseAdditionalInfo</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.7.KernelUptime</Name>
+					<Value xsi:type="xsd:unsignedInt">21</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.7.ShutdownTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:01Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.7.RebootCauseInfo</Name>
+					<Value xsi:type="xsd:string">USER REINITIALISE</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.8.RebootCauseAdditionalInfo</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.8.ShutdownTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:01Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.8.RebootCauseInfo</Name>
+					<Value xsi:type="xsd:string">NON CLEAN COLD SHUTDOWN</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.9.RebootCauseAdditionalInfo</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.9.KernelUptime</Name>
+					<Value xsi:type="xsd:unsignedInt">27</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.9.ShutdownTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:06Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.9.RebootCauseInfo</Name>
+					<Value xsi:type="xsd:string">USER FACTORY RESTORE</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.10.RebootCauseAdditionalInfo</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.10.ShutdownTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:01Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.10.RebootCauseInfo</Name>
+					<Value xsi:type="xsd:string">NON CLEAN COLD SHUTDOWN</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.11.RebootCauseAdditionalInfo</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.11.ShutdownTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:01Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.11.RebootCauseInfo</Name>
+					<Value xsi:type="xsd:string">NON CLEAN COLD SHUTDOWN</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.12.RebootCauseAdditionalInfo</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.12.ShutdownTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:01Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.12.RebootCauseInfo</Name>
+					<Value xsi:type="xsd:string">NON CLEAN COLD SHUTDOWN</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.13.RebootCauseAdditionalInfo</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.13.KernelUptime</Name>
+					<Value xsi:type="xsd:unsignedInt">27</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.13.ShutdownTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:07Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.13.RebootCauseInfo</Name>
+					<Value xsi:type="xsd:string">USER FACTORY RESTORE</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.14.RebootCauseAdditionalInfo</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.14.KernelUptime</Name>
+					<Value xsi:type="xsd:unsignedInt">27</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.14.ShutdownTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:07Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.14.RebootCauseInfo</Name>
+					<Value xsi:type="xsd:string">USER FACTORY RESTORE</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.15.RebootCauseAdditionalInfo</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.15.ShutdownTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:01Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.15.RebootCauseInfo</Name>
+					<Value xsi:type="xsd:string">NON CLEAN COLD SHUTDOWN</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.16.RebootCauseAdditionalInfo</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.16.KernelUptime</Name>
+					<Value xsi:type="xsd:unsignedInt">28</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.16.ShutdownTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:06Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.16.RebootCauseInfo</Name>
+					<Value xsi:type="xsd:string">USER FACTORY RESTORE</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.17.RebootCauseAdditionalInfo</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.17.ShutdownTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:01Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.17.RebootCauseInfo</Name>
+					<Value xsi:type="xsd:string">NON CLEAN COLD SHUTDOWN</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.18.RebootCauseAdditionalInfo</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.18.ShutdownTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:01Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.18.RebootCauseInfo</Name>
+					<Value xsi:type="xsd:string">NON CLEAN COLD SHUTDOWN</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.19.RebootCauseAdditionalInfo</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.19.ShutdownTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:01Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.19.RebootCauseInfo</Name>
+					<Value xsi:type="xsd:string">NON CLEAN COLD SHUTDOWN</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.20.RebootCauseAdditionalInfo</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.20.ShutdownTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:01Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.X_000295_RebootHistory.20.RebootCauseInfo</Name>
+					<Value xsi:type="xsd:string">NON CLEAN COLD SHUTDOWN</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Services.FAPService.1.REM.UMTS.WCDMA.X_000295_NextRFScanTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T23:59:59Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Time.CurrentLocalTime</Name>
+					<Value xsi:type="xsd:dateTime">2021-09-22T23:46:41Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.AdditionalSoftwareVersion</Name>
+					<Value xsi:type="xsd:string">DM: 182, B: 180.0, SK: 225.2.0, SF: 579.26.7_signed, BK: 11</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.1.AlarmIdentifier</Name>
+					<Value xsi:type="xsd:string">1</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.1.NotificationType</Name>
+					<Value xsi:type="xsd:string">NewAlarm</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.1.ManagedObjectInstance</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.1.EventType</Name>
+					<Value xsi:type="xsd:string">PROCESSING ERROR ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.1.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Software Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.1.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">Internal SW Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.1.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Warning</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.1.AdditionalText</Name>
+					<Value xsi:type="xsd:string">Event:1 - No Software download URL received. Ignoring action! FILE=sysctrl_swdl, LINE=1348</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.1.AlarmIdentifier</Name>
+					<Value xsi:type="xsd:string">1</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.1.NotificationType</Name>
+					<Value xsi:type="xsd:string">NewAlarm</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.1.ManagedObjectInstance</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.1.EventType</Name>
+					<Value xsi:type="xsd:string">PROCESSING ERROR ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.1.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Software Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.1.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">Internal SW Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.1.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Warning</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.1.AdditionalText</Name>
+					<Value xsi:type="xsd:string">Event:1 - No Software download URL received. Ignoring action! FILE=sysctrl_swdl, LINE=1348</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.2.EventTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:11Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.2.AlarmIdentifier</Name>
+					<Value xsi:type="xsd:string">2</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.2.NotificationType</Name>
+					<Value xsi:type="xsd:string">NewAlarm</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.2.ManagedObjectInstance</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.2.EventType</Name>
+					<Value xsi:type="xsd:string">PROCESSING ERROR ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.2.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Software Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.2.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">Internal SW Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.2.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Warning</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.2.AdditionalText</Name>
+					<Value xsi:type="xsd:string">Event:1 - No Software Upload URL received. Ignoring action! FILE=sysctrl_mt, LINE=10482</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.2.EventTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:11Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.2.AlarmIdentifier</Name>
+					<Value xsi:type="xsd:string">2</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.2.NotificationType</Name>
+					<Value xsi:type="xsd:string">NewAlarm</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.2.ManagedObjectInstance</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.2.EventType</Name>
+					<Value xsi:type="xsd:string">PROCESSING ERROR ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.2.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Software Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.2.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">Internal SW Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.2.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Warning</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.2.AdditionalText</Name>
+					<Value xsi:type="xsd:string">Event:1 - No Software Upload URL received. Ignoring action! FILE=sysctrl_mt, LINE=10482</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Services.FAPService.1.Capabilities.UMTS.FDDBandsSupported</Name>
+					<Value xsi:type="xsd:string">II,V</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Services.FAPService.1.Capabilities.UMTS.GSMRxBandsSupported</Name>
+					<Value xsi:type="xsd:string">GSM850,PCS1900</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Services.FAPService.1.Capabilities.UMTS.X_000295_UMTSRxBandsSupported</Name>
+					<Value xsi:type="xsd:string">II,V</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.TemperatureStatus.TemperatureSensor.1.Status</Name>
+					<Value xsi:type="xsd:string">Enabled</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.TemperatureStatus.TemperatureSensor.1.Value</Name>
+					<Value xsi:type="xsd:signedInt">35</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.TemperatureStatus.TemperatureSensorNumberOfEntries</Name>
+					<Value xsi:type="xsd:unsignedInt">1</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.Certificate.1.Issuer</Name>
+					<Value xsi:type="xsd:string">C=GB, O=ip.access Ltd, OU=OEM CA, CN=101</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.Certificate.1.SerialNumber</Name>
+					<Value xsi:type="xsd:string">21610</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.Certificate.1.Subject</Name>
+					<Value xsi:type="xsd:string">C=GB, O=ip.access Ltd, OU=3GAP, CN=000295-0000211573</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.Certificate.1.X_000295_CertificateFingerprint</Name>
+					<Value xsi:type="xsd:string">B9:46:3A:0B:CE:F1:0E:48:D3:5E:41:29:70:19:27:38:AB:25:7B:7E</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.Certificate.1.NotAfter</Name>
+					<Value xsi:type="xsd:dateTime">2038-12-03T16:05:22Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.Certificate.1.SubjectAlt</Name>
+					<Value xsi:type="xsd:string">DNS=000295-0000211573.ap.ipaccess.com</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.Certificate.2.Issuer</Name>
+					<Value xsi:type="xsd:string">C=GB, O=ip.access Ltd, OU=Root CA, CN=100</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.Certificate.2.SerialNumber</Name>
+					<Value xsi:type="xsd:string">1</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.Certificate.2.Subject</Name>
+					<Value xsi:type="xsd:string">C=GB, O=ip.access Ltd, OU=OEM CA, CN=101</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.Certificate.2.X_000295_CertificateFingerprint</Name>
+					<Value xsi:type="xsd:string">81:64:63:8C:75:4C:A8:9C:1C:83:FB:8C:4F:F0:FA:E1:2F:9F:23:7F</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.Certificate.2.NotAfter</Name>
+					<Value xsi:type="xsd:dateTime">2034-03-28T14:51:18Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.Certificate.2.SubjectAlt</Name>
+					<Value xsi:type="xsd:string">email=support@ipaccess.com</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.Certificate.3.Issuer</Name>
+					<Value xsi:type="xsd:string">C=GB, O=ip.access Ltd, OU=Root CA, CN=100</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.Certificate.3.SerialNumber</Name>
+					<Value xsi:type="xsd:string">0</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.Certificate.3.Subject</Name>
+					<Value xsi:type="xsd:string">C=GB, O=ip.access Ltd, OU=Root CA, CN=100</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.Certificate.3.X_000295_CertificateFingerprint</Name>
+					<Value xsi:type="xsd:string">A2:4D:76:3C:85:CC:F4:D2:64:F8:8B:AD:1D:4D:C4:A7:2E:FF:BA:78</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.Certificate.3.NotAfter</Name>
+					<Value xsi:type="xsd:dateTime">2034-03-28T14:50:15Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.Certificate.3.SubjectAlt</Name>
+					<Value xsi:type="xsd:string">email=support@ipaccess.com</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.CertificateNumberOfEntries</Name>
+					<Value xsi:type="xsd:unsignedInt">3</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.3.EventTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:12Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.3.AlarmIdentifier</Name>
+					<Value xsi:type="xsd:string">3</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.3.NotificationType</Name>
+					<Value xsi:type="xsd:string">NewAlarm</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.3.ManagedObjectInstance</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.3.EventType</Name>
+					<Value xsi:type="xsd:string">PROCESSING ERROR ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.3.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Software Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.3.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">Internal SW Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.3.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Warning</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.3.AdditionalText</Name>
+					<Value xsi:type="xsd:string">Event:1 - IPsec is disabled! Can't process IPsec Request FILE=security_ctrl, LINE=1391</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.3.EventTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:12Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.3.AlarmIdentifier</Name>
+					<Value xsi:type="xsd:string">3</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.3.NotificationType</Name>
+					<Value xsi:type="xsd:string">NewAlarm</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.3.ManagedObjectInstance</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.3.EventType</Name>
+					<Value xsi:type="xsd:string">PROCESSING ERROR ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.3.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Software Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.3.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">Internal SW Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.3.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Warning</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.3.AdditionalText</Name>
+					<Value xsi:type="xsd:string">Event:1 - IPsec is disabled! Can't process IPsec Request FILE=security_ctrl, LINE=1391</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.4.EventTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:13Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.4.AlarmIdentifier</Name>
+					<Value xsi:type="xsd:string">4</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.4.NotificationType</Name>
+					<Value xsi:type="xsd:string">NewAlarm</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.4.ManagedObjectInstance</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.4.EventType</Name>
+					<Value xsi:type="xsd:string">PROCESSING ERROR ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.4.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Software Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.4.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">Internal SW Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.4.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Warning</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.4.AdditionalText</Name>
+					<Value xsi:type="xsd:string">Event:1 - No Pm Upload URL received. Ignoring action! FILE=pmctrl_oam_if, LINE=1806</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.4.EventTime</Name>
+					<Value xsi:type="xsd:dateTime">2018-03-13T16:00:13Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.4.AlarmIdentifier</Name>
+					<Value xsi:type="xsd:string">4</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.4.NotificationType</Name>
+					<Value xsi:type="xsd:string">NewAlarm</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.4.ManagedObjectInstance</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.4.EventType</Name>
+					<Value xsi:type="xsd:string">PROCESSING ERROR ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.4.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Software Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.4.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">Internal SW Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.4.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Warning</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.4.AdditionalText</Name>
+					<Value xsi:type="xsd:string">Event:1 - No Pm Upload URL received. Ignoring action! FILE=pmctrl_oam_if, LINE=1806</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Services.FAPService.1.CellConfig.UMTS.CN.X_000295_BroadcastSAIInUse</Name>
+					<Value xsi:type="xsd:string">,0,0</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Services.FAPService.1.FAPControl.UMTS.RFTxStatus</Name>
+					<Value xsi:type="xsd:boolean">false</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.ManagementServer.ConnectionRequestURL</Name>
+					<Value xsi:type="xsd:string">http://10.0.11.175:7547/cwmp/creq</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Services.FAPService.1.Capabilities.UMTS.X_000295_MaxNumCellDchUEs</Name>
+					<Value xsi:type="xsd:unsignedInt">16</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Services.FAPService.1.Capabilities.UMTS.SelfConfig.NoiseRiseLimitConfig</Name>
+					<Value xsi:type="xsd:boolean">false</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Services.FAPService.1.FAPControl.UMTS.OpState</Name>
+					<Value xsi:type="xsd:boolean">false</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.X_000295_AugmentingTrustAnchorSetIdentity</Name>
+					<Value xsi:type="xsd:string">T-Mobile Augmenting Trust Anchor Set, 23 July 2010  v1.0</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.X_000295_CRLCache.1.CRLIssuer</Name>
+					<Value xsi:type="xsd:string">101</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.X_000295_CRLCache.1.CRLNumber</Name>
+					<Value xsi:type="xsd:string">146</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.X_000295_CRLCache.1.NextUpdate</Name>
+					<Value xsi:type="xsd:string">2021-12-06T15:51:44Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.X_000295_CRLCache.2.CRLIssuer</Name>
+					<Value xsi:type="xsd:string">100</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.X_000295_CRLCache.2.CRLNumber</Name>
+					<Value xsi:type="xsd:string">3</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.X_000295_CRLCache.2.NextUpdate</Name>
+					<Value xsi:type="xsd:string">2037-03-17T17:32:50Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.Security.X_000295_CRLCacheNumberOfEntries</Name>
+					<Value xsi:type="xsd:unsignedInt">2</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.5.EventTime</Name>
+					<Value xsi:type="xsd:dateTime">2021-09-22T23:45:50Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.5.AlarmIdentifier</Name>
+					<Value xsi:type="xsd:string">5</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.5.NotificationType</Name>
+					<Value xsi:type="xsd:string">NewAlarm</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.5.ManagedObjectInstance</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.5.EventType</Name>
+					<Value xsi:type="xsd:string">PROCESSING ERROR ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.5.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Software Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.5.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">Internal SW Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.5.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Warning</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.HistoryEvent.5.AdditionalText</Name>
+					<Value xsi:type="xsd:string">Event:1 - IPsec is disabled! Can't process IPsec Request FILE=security_ctrl, LINE=1391</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.5.EventTime</Name>
+					<Value xsi:type="xsd:dateTime">2021-09-22T23:45:50Z</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.5.AlarmIdentifier</Name>
+					<Value xsi:type="xsd:string">5</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.5.NotificationType</Name>
+					<Value xsi:type="xsd:string">NewAlarm</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.5.ManagedObjectInstance</Name>
+					<Value xsi:type="xsd:string"></Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.5.EventType</Name>
+					<Value xsi:type="xsd:string">PROCESSING ERROR ALARM</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.5.ProbableCause</Name>
+					<Value xsi:type="xsd:string">Software Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.5.SpecificProblem</Name>
+					<Value xsi:type="xsd:string">Internal SW Error</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.5.PerceivedSeverity</Name>
+					<Value xsi:type="xsd:string">Warning</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.FaultMgmt.ExpeditedEvent.5.AdditionalText</Name>
+					<Value xsi:type="xsd:string">Event:1 - IPsec is disabled! Can't process IPsec Request FILE=security_ctrl, LINE=1391</Value>
+				</ParameterValueStruct>
+				<ParameterValueStruct>
+					<Name>Device.DeviceInfo.SupportedDataModel.1.Features</Name>
+					<Value xsi:type="xsd:string">X_000295_3GAPDevice</Value>
+				</ParameterValueStruct>
+			</ParameterList>
+		</cwmp:Inform>
+	</soap-env:Body>
+</soap-env:Envelope>

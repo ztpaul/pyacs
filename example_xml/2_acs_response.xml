@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cwmp="urn:dslforum-org:cwmp-1-0">
+<soap-env:Header>
+<cwmp:ID soap-env:mustUnderstand="1">17c0fe79e0c0113</cwmp:ID>
+</soap-env:Header>
+<soap-env:Body>
+<cwmp:SetParameterValuesResponse>
+<Status>0</Status>
+</cwmp:SetParameterValuesResponse>
+</soap-env:Body>
+</soap-env:Envelope>

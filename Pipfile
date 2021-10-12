@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+eventlet = "==0.30.0"
+flask-kvsession = "*"
+flask-caching = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
+
+[packages.gunicorn]
+extras = [ "eventlet",]

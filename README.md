@@ -28,7 +28,7 @@ To override values for a specific CPE create a section with the serialnumber inc
 
 **IMPORTANT** ensure the **Device.ManagementServer.URL=http://10.0.11.184:7547/acs|xsd:string** matches this server including the /acs.
 
-After changing values in the femtocells.ini the femto cell can be either rebooted or wait until the femto cell is informing us again (see periodic inform / tr069).
+After changing values in the tr098.ini the CPE cell can be either rebooted or wait until the CPE is informing us again (see periodic inform / tr069).
 
 ## Running
 

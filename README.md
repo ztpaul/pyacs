@@ -1,7 +1,7 @@
 # tr069-acs
 
 This is a *hack* to get ip.access CPE configured without using a huge tr069/ACS server like (geniacs, ...).
-This simplified version only reacts on *Inform/GetRPCMethods*  and tries to set values from the configuration file without checking the state of the CPE.
+This simplified version only reacts on **Inform/GetRPCMethods**  and tries to set values from the configuration file without checking the state of the CPE.
 It further does not create or delete objects if they don't exist. Neither does it check if the values in the ini file are valid. E.g. by getting both values and type from the device itself.
 
 ## Installation

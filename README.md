@@ -6,13 +6,11 @@ It further does not create or delete objects if they don't exist. Neither does i
 
 ## Installation
 
-### debian
+### Windows
 
-Ensure python3 with pipenv is installed
-
-`apt-get install python3 pipenv`
 
 ```sh
+pip install --user pipenv
 pipenv install
 ```
 
@@ -36,9 +34,7 @@ After changing values in the femtocells.ini the femto cell can be either reboote
 
 From within the repository call:
 ```
-pipenv install
-pipenv shell
-gunicorn -k eventlet --keep-alive 600 --bind 0.0.0.0:7547 app:app
+pipenv run waitress-serve --listen=*:80 app:app
 ```
 
 gunicorn is used to allow keep-alive connections.

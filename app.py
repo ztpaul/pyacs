@@ -15,6 +15,14 @@ from xmlutils import *
 
 LOG = logging.getLogger("acs_emu")
 STORE = FilesystemStore('./data')
+XML_COMMON_HEADER=\
+'<?xml version="1.0" encoding="UTF-8"?>\n\
+<soap-env:Envelope\n\
+    xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/"\n\
+    xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"\n\
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"\n\
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"\n\
+    xmlns:cwmp="urn:dslforum-org:cwmp-1-2">\n'
 
 app = Flask("acs_emu")
 KVSessionExtension(STORE, app)
@@ -74,8 +82,8 @@ def inform(tree, node):
         send_configuration(serial, True)
         LOG.error("Device %s booted", serial)
 
-    LOG.error("Device %s informed us. cwmpipd %s. Events %s", serial, cwmpid, ", ".join(events))
-    response = make_response(render_template('inform.jinja.xml', cwmpid=cwmpid))
+    LOG.warn("Device %s informed us. cwmpipd=%s. Events=%s", serial, cwmpid, ", ".join(events))
+    response = make_response(XML_COMMON_HEADER+render_template('inform.jinja.xml', cwmpid=cwmpid))
     response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
     response.headers['SOAPServer'] = 'femto-acs/1.1.1'
     response.headers['Server'] = 'femto-acs/1.1.1'
@@ -92,7 +100,7 @@ def send_setparams():
     # keep track if we already sent out a response
     LOG.error("Device %s sending configuration", serial)
     send_configuration(serial, True)
-    response = make_response(render_template('setparams.jinja.xml',
+    response = make_response(XML_COMMON_HEADER+render_template('setparams.jinja.xml',
                                              cwmpid=23, params=params, length_params=len(params)))
     response.headers['Content-Type'] = 'text/xml'
     return response

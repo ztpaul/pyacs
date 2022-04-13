@@ -5,6 +5,8 @@
 import logging
 LOG = logging.getLogger("xmlutils")
 
+ACS_METHODS_TUPLE = ('GetRPCMethods', 'Inform') #RPC methods that ACS have supported.
+
 XML_NS = {
         'soap-env': 'http://schemas.xmlsoap.org/soap/envelope/',
         'cwmp': 'urn:dslforum-org:cwmp-1-2'
@@ -31,7 +33,8 @@ def get_cwmp_id(root):
     if header is None:
         return None
 
-    cwmpid = header.find('{urn:dslforum-org:cwmp-1-0}ID', XML_NS)
+    prefix = '{' + XML_NS['cwmp'] + '}'
+    cwmpid = header.find(prefix+ 'ID', XML_NS)
     if cwmpid is not None:
         return cwmpid.text
     return None

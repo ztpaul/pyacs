@@ -124,6 +124,7 @@ def acs():
 
     # POST requests
     if request.content_type != 'text/xml':
+        LOG.error(f"request.content_type={request.content_type}")
         return 'Wrong content type'
 
     # when the client doesn't send us any data, it's ready for our request
@@ -158,4 +159,5 @@ def acs():
     return 'This is a femto-acs/tr069 server'
 
 if __name__ == '__main__':
+    print('bobo')
     app.run()

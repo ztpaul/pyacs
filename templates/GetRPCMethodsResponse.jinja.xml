@@ -1,0 +1,14 @@
+    <soap-env:Header>
+        <cwmp:ID soap-env:mustUnderstand="1">{{ cwmpid }}</cwmp:ID>
+    </soap-env:Header>
+    <soap-env:Body>
+        <cwmp:GetRPCMethodsResponse>
+            <MethodList soap-enc:arrayType="xsd:string[{{ length }}]">
+                {%- for obj in method_list %}
+                <string>{{ obj }}</string>
+                {%- endfor %}
+            </MethodList>
+        </cwmp:GetRPCMethodsResponse>
+    </soap-env:Body>
+</soap-env:Envelope>
+

@@ -71,7 +71,7 @@ def generate_config(params=None, serial=None, config_file='./config/femtocells.i
 def root():
     return 'This is a femto-acs/tr069 server'
 
-def inform(tree, node):
+def handle_inform(tree, node):
     """ handle a device Inform request """
     cwmpid = get_cwmp_id(tree)
     serial = get_cwmp_inform_serial(node)
@@ -82,8 +82,22 @@ def inform(tree, node):
         send_configuration(serial, True)
         LOG.error("Device %s booted", serial)
 
-    LOG.warn("Device %s informed us. cwmpipd=%s. Events=%s", serial, cwmpid, ", ".join(events))
-    response = make_response(XML_COMMON_HEADER+render_template('inform.jinja.xml', cwmpid=cwmpid))
+    LOG.warn("Receive Inform form Device %s. cwmpipd=%s. Events=%s", serial, cwmpid, ", ".join(events))
+    response = make_response(XML_COMMON_HEADER+render_template('InformResponse.jinja.xml', cwmpid=cwmpid))
+    response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
+    response.headers['SOAPServer'] = 'femto-acs/1.1.1'
+    response.headers['Server'] = 'femto-acs/1.1.1'
+    return response
+
+
+# description: handle a device GetRPCMethods request
+# input: tree
+#
+def handle_getrpcmethods(tree):
+    cwmpid = get_cwmp_id(tree)
+
+    LOG.warn("Receive GetRPCMethods")
+    response = make_response(XML_COMMON_HEADER+render_template('GetRPCMethodsResponse.jinja.xml', cwmpid=cwmpid, method_list=ACS_METHODS_TUPLE, length=len(ACS_METHODS_TUPLE)))
     response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
     response.headers['SOAPServer'] = 'femto-acs/1.1.1'
     response.headers['Server'] = 'femto-acs/1.1.1'
@@ -100,7 +114,7 @@ def send_setparams():
     # keep track if we already sent out a response
     LOG.error("Device %s sending configuration", serial)
     send_configuration(serial, True)
-    response = make_response(XML_COMMON_HEADER+render_template('setparams.jinja.xml',
+    response = make_response(XML_COMMON_HEADER+render_template('SetParameterValues.jinja.xml',
                                              cwmpid=23, params=params, length_params=len(params)))
     response.headers['Content-Type'] = 'text/xml'
     return response
@@ -152,17 +166,19 @@ def acs():
     except:
         return 'Could not parse the request as XML'
 
-    method = get_cwmp_method(tree)
+    method = get_cwmp_method(tree) #here method is a tuple of "method string" and related "xml.etree.ElementTree.Element"
     if not method:
         return 'Failed to get the cwmp method'
 
     method, node = method
 
-    if method == "Inform":
-        return inform(tree, node)
-
-    if method == "SetParameterValuesResponse":
-        return setparams_response(tree, node)
+    match method:
+        case "GetRPCMethods":
+            return handle_getrpcmethods(tree)
+        case "Inform":
+            return handle_inform(tree, node)
+        case "SetParameterValuesResponse":
+            return setparams_response(tree, node)
 
     return 'This is a femto-acs/tr069 server'
 

@@ -21,8 +21,10 @@ def get_cwmp_method(root):
 
     prefix = '{' + XML_NS['cwmp'] + '}'
     for child in body:
-        if child.tag == prefix + 'Inform':
-            return ('Inform', child)
+        for method in ACS_METHODS_TUPLE:            
+            if child.tag == prefix + method:
+                return (method, child)
+
         if child.tag == prefix+ 'SetParameterValuesResponse':
             return ('SetParameterValuesResponse', child)
     return None

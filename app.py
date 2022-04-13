@@ -123,7 +123,7 @@ def acs():
         return 'There is nothing to show'
 
     # POST requests
-    if request.content_type != 'text/xml':
+    if request.content_type.find('text/xml')==-1:
         LOG.error(f"request.content_type={request.content_type}")
         return 'Wrong content type'
 

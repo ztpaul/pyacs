@@ -2,21 +2,26 @@
 # Author: Alexander Couzens <lynxis@fe80.eu>
 # (C) 2021 by sysmocom - s.f.m.c. GmbH <info@sysmocom.de>
 
+import logging
+LOG = logging.getLogger("xmlutils")
+
 XML_NS = {
         'soap-env': 'http://schemas.xmlsoap.org/soap/envelope/',
-        'cwmp': 'urn:dslforum-org:cwmp-1-0'
+        'cwmp': 'urn:dslforum-org:cwmp-1-2'
         }
 
 def get_cwmp_method(root):
     """ retrieve the cwmp method from the xml root Node """
     body = root.find('soap-env:Body', XML_NS)
     if body is None:
+        LOG.error('find soap-env:Body failed')
         return None
 
+    prefix = '{' + XML_NS['cwmp'] + '}'
     for child in body:
-        if child.tag == '{urn:dslforum-org:cwmp-1-0}Inform':
+        if child.tag == prefix + 'Inform':
             return ('Inform', child)
-        if child.tag == '{urn:dslforum-org:cwmp-1-0}SetParameterValuesResponse':
+        if child.tag == prefix+ 'SetParameterValuesResponse':
             return ('SetParameterValuesResponse', child)
     return None
 

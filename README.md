@@ -37,8 +37,6 @@ From within the repository call:
 pipenv run waitress-serve --listen=*:80 app:app
 ```
 
-gunicorn is used to allow keep-alive connections.
-
 ## Troubleshooting
 
 ### femto cell stops reacting on ACS data

@@ -4,11 +4,11 @@
     <soap-env:Body>
         <cwmp:SetParameterValues>
             <ParameterList soap-enc:arrayType="cwmp:ParameterValueStruct[{{ length_params }}]">
-                {% for obj in params %}
+                {%- for obj in params %}
                 <ParameterValueStruct><Name>{{ obj }}</Name>
                     <Value xsi:type="{{ params[obj]['xmltype'] }}">{{ params[obj]['value'] }}</Value>
                 </ParameterValueStruct>
-                {% endfor %}
+                {%- endfor %}
             </ParameterList>
             <ParameterKey/>
         </cwmp:SetParameterValues>

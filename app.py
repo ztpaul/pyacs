@@ -44,7 +44,7 @@ def need_configuration(serial):
         return True
     return need
 
-def generate_config(params=None, serial=None, config_file='./config/femtocells.ini'):
+def generate_config(params=None, serial=None, config_file='./config/tr098.ini'):
     """ return a params dict for setparams from the config file """
     if params is None:
         params = {}

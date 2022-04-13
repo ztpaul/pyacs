@@ -20,11 +20,11 @@ pipenv install
 
 Please change the `SECRET_KEY` by generating your own. The `SECRET_KEY` is used to sign cookies.
 
-### config/femtocells.ini
+### config/tr098.ini
 
-The main configuration file for the femtocells. The *Common* section is used as default values which can be overriden by a specific
-femtocell configuration.
-To override values for a specific femtocell create a section with the serialnumber including leading zeros as shown for femtocell *0000123456*.
+The main configuration file for TR-098. The *Common* section is used as default values which can be overriden by a specific CPE configuration.
+
+To override values for a specific CPE create a section with the serialnumber including leading zeros as shown for *0000123456*.
 
 **IMPORTANT** ensure the **Device.ManagementServer.URL=http://10.0.11.184:7547/acs|xsd:string** matches this server including the /acs.
 

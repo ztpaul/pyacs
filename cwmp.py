@@ -12,6 +12,7 @@ from flask_kvsession import KVSessionExtension
 from simplekv.fs import FilesystemStore
 
 from soap import *
+soap = Soap()
 
 LOG = logging.getLogger("acs_emu")
 STORE = FilesystemStore('./data')
@@ -73,9 +74,9 @@ def root():
 
 def handle_inform(tree, node):
     """ handle a device Inform request """
-    cwmpid = get_cwmp_id(tree)
-    serial = get_cwmp_inform_serial(node)
-    events = get_cwmp_inform_events(node)
+    cwmpid = soap.get_cwmp_id(tree)
+    serial = soap.get_cwmp_inform_serial(node)
+    events = soap.get_cwmp_inform_events(node)
 
     session['serial'] = serial
     if '0 BOOTSTRAP' in events or '1 BOOT' in events:
@@ -94,10 +95,10 @@ def handle_inform(tree, node):
 # input: tree
 #
 def handle_getrpcmethods(tree):
-    cwmpid = get_cwmp_id(tree)
+    cwmpid = soap.get_cwmp_id(tree)
 
     LOG.warn("Receive GetRPCMethods")
-    response = make_response(XML_COMMON_HEADER+render_template('GetRPCMethodsResponse.jinja.xml', cwmpid=cwmpid, method_list=ACS_METHODS_TUPLE, length=len(ACS_METHODS_TUPLE)))
+    response = make_response(XML_COMMON_HEADER+render_template('GetRPCMethodsResponse.jinja.xml', cwmpid=cwmpid, method_list=Soap.m_methods, length=len(Soap.m_methods)))
     response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
     response.headers['SOAPServer'] = 'femto-acs/1.1.1'
     response.headers['Server'] = 'femto-acs/1.1.1'
@@ -122,7 +123,7 @@ def send_setparams():
 def setparams_response(tree, node):
     """ handle the setparams response """
     serial = session['serial']
-    status = get_cwmp_setresponse_status(node)
+    status = soap.get_cwmp_setresponse_status(node)
     if status is not None:
         if status == '0':
             LOG.error("Device %s applied configuration changes without reboot", serial)
@@ -166,7 +167,7 @@ def acs():
     except:
         return 'Could not parse the request as XML'
 
-    method = get_cwmp_method(tree) #here method is a tuple of "method string" and related "xml.etree.ElementTree.Element"
+    method = soap.get_cwmp_method(tree) #here method is a tuple of "method string" and related "xml.etree.ElementTree.Element"
     if not method:
         return 'Failed to get the cwmp method'
 

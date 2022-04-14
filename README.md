@@ -1,4 +1,4 @@
-# tr069-acs
+# pyacs
 
 This is a *hack* to get ip.access CPE configured without using a huge tr069/ACS server like (geniacs, ...).
 This simplified version only reacts on **Inform/GetRPCMethods**  and tries to set values from the configuration file without checking the state of the CPE.

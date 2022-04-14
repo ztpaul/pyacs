@@ -11,7 +11,7 @@ from flask_caching import Cache
 from flask_kvsession import KVSessionExtension
 from simplekv.fs import FilesystemStore
 
-from xmlutils import *
+from soap import *
 
 LOG = logging.getLogger("acs_emu")
 STORE = FilesystemStore('./data')
@@ -24,7 +24,7 @@ XML_COMMON_HEADER=\
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"\n\
     xmlns:cwmp="urn:dslforum-org:cwmp-1-2">\n'
 
-app = Flask("acs_emu")
+app = Flask("pyacs")
 KVSessionExtension(STORE, app)
 
 app.config.from_pyfile('./config/flask.py')

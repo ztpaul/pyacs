@@ -32,7 +32,7 @@ Please change the `SECRET_KEY` by generating your own. The `SECRET_KEY` is used 
 
 From within the repository call:
 ```
-pipenv run waitress-serve --listen=*:80 app:app
+pipenv run waitress-serve --listen=*:80 cwmp:app
 ```
 
 ## Troubleshooting

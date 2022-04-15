@@ -45,5 +45,6 @@ pipenv run python pyacs.py
 Ensure the xml files contain an extra newline (ascii 0xa) on the end of the request.
 
 # 6 Bugs / Limitations
+*Note - please see Issues for known bugs*
 
 It doesn't use any external database (mysql) or cache system (redis) to reduce the amount of external dependencies and simplify the setup.

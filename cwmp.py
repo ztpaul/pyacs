@@ -62,6 +62,24 @@ class Cwmp:
             read_config_to_params(sn)
         return params
 
+    def generate_unauthorized(self, authentication):
+        response = make_response()
+        response.status_code = 401
+        response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
+        response.headers['Connection'] = 'close'
+        response.set_cookie('pyacs', 'pyacs_cookie')
+        if authentication == 'Basic':
+            response.headers['WWW-Authenticate'] = 'Basic realm="pyacs"'
+        return response
+
+
+    def generate_forbidden(self):
+        response = make_response()
+        response.status_code = 403
+        response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
+        response.headers['Connection'] = 'close'
+        return response
+
     def handle_inform(self, tree, node):
         """ handle a device Inform request """
         cwmpid = self.soap.get_cwmp_id(tree)
@@ -76,8 +94,6 @@ class Cwmp:
         logging.warn("Receive Inform form Device %s. cwmpipd=%s. Events=%s", sn, cwmpid, ", ".join(events))
         response = make_response(Cwmp.m_common_header+render_template('InformResponse.jinja.xml', cwmpid=cwmpid))
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
-        response.headers['SOAPServer'] = 'pyacs'
-        response.headers['Server'] = 'pyacs'
         return response
 
 
@@ -90,8 +106,6 @@ class Cwmp:
         logging.warn("Receive GetRPCMethods")
         response = make_response(Cwmp.m_common_header+render_template('GetRPCMethodsResponse.jinja.xml', cwmpid=cwmpid, method_list=Soap.m_methods, length=len(Soap.m_methods)))
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
-        response.headers['SOAPServer'] = 'pyacs'
-        response.headers['Server'] = 'pyacs'
         return response
 
     def send_setparams(self):
@@ -107,7 +121,7 @@ class Cwmp:
         self.send_configuration(sn, True)
         response = make_response(Cwmp.m_common_header+render_template('SetParameterValues.jinja.xml',
                                                 cwmpid=23, params=params, length_params=len(params)))
-        response.headers['Content-Type'] = 'text/xml'
+        response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
         return response
 
     def handle_setparametervalues_response(self, tree, node):
@@ -123,7 +137,7 @@ class Cwmp:
                 logging.error("Device %s returned unknown status value (%s)", sn)
         self.send_configuration(sn, False)
         response = make_response()
-        response.headers['Content-Type'] = 'text/xml'
+        response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
         return response
 
     def handle_request(self, request):
@@ -135,7 +149,7 @@ class Cwmp:
             if self.need_configuration(session['sn']):
                 return self.send_setparams()
 
-            logging.error("Device %s already configured", session['sn'])
+            logging.warn("Device %s already configured", session['sn'])
             return make_response()
 
         # some request content data

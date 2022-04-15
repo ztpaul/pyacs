@@ -5,9 +5,9 @@ name = "pypi"
 
 [packages]
 flask = "*"
-eventlet = "*"
 flask-kvsession = "*"
 flask-caching = "*"
+flask_httpauth = "*"
 waitress = "*"
 coloredlogs = "*"
 

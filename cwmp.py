@@ -28,19 +28,19 @@ class Cwmp:
         cache.clear()
         self.cache = cache
 
-    def send_configuration(self, serial, push):
-        """ write to the 'database' if this serial needs a configuration """
-        self.cache.set(serial, push)
+    def send_configuration(self, sn, push):
+        """ write to the 'database' if this sn needs a configuration """
+        self.cache.set(sn, push)
 
-    def need_configuration(self, serial):
+    def need_configuration(self, sn):
         """ does this device needs a new configuration? """
-        need = self.cache.get(serial)
+        need = self.cache.get(sn)
         if need is None:
-            self.cache.set(serial, True)
+            self.cache.set(sn, True)
             return True
         return need
 
-    def generate_config(self, params=None, serial=None, config_file='./config/tr098.ini'):
+    def generate_config(self, params=None, sn=None, config_file='./config/tr098.ini'):
         """ return a params dict for setparams from the config file """
         if params is None:
             params = {}
@@ -59,26 +59,26 @@ class Cwmp:
 
         read_config_to_params('Common')
 
-        if serial and serial in config:
-            read_config_to_params(serial)
+        if sn and sn in config:
+            read_config_to_params(sn)
         return params
 
     def handle_inform(self, tree, node):
         """ handle a device Inform request """
         cwmpid = self.soap.get_cwmp_id(tree)
-        serial = self.soap.get_cwmp_inform_serial(node)
+        sn = self.soap.get_cwmp_inform_sn(node)
         events = self.soap.get_cwmp_inform_events(node)
 
-        session['serial'] = serial
+        session['sn'] = sn
         if '0 BOOTSTRAP' in events or '1 BOOT' in events:
-            self.send_configuration(serial, True)
-            Cwmp.log.error("Device %s booted", serial)
+            self.send_configuration(sn, True)
+            Cwmp.log.error("Device %s booted", sn)
 
-        Cwmp.log.warn("Receive Inform form Device %s. cwmpipd=%s. Events=%s", serial, cwmpid, ", ".join(events))
+        Cwmp.log.warn("Receive Inform form Device %s. cwmpipd=%s. Events=%s", sn, cwmpid, ", ".join(events))
         response = make_response(Cwmp.m_common_header+render_template('InformResponse.jinja.xml', cwmpid=cwmpid))
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
-        response.headers['SOAPServer'] = 'femto-acs/1.1.1'
-        response.headers['Server'] = 'femto-acs/1.1.1'
+        response.headers['SOAPServer'] = 'pyacs'
+        response.headers['Server'] = 'pyacs'
         return response
 
 
@@ -91,21 +91,21 @@ class Cwmp:
         Cwmp.log.warn("Receive GetRPCMethods")
         response = make_response(Cwmp.m_common_header+render_template('GetRPCMethodsResponse.jinja.xml', cwmpid=cwmpid, method_list=Soap.m_methods, length=len(Soap.m_methods)))
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
-        response.headers['SOAPServer'] = 'femto-acs/1.1.1'
-        response.headers['Server'] = 'femto-acs/1.1.1'
+        response.headers['SOAPServer'] = 'pyacs'
+        response.headers['Server'] = 'pyacs'
         return response
 
     def send_setparams(self):
         """ request a setparams """
         # e.g. params are {name: "arfcn", xmltype: "xsd:int", value: "23"}
-        serial = session['serial']
+        sn = session['sn']
 
         params = {}
-        params = self.generate_config(params, serial)
+        params = self.generate_config(params, sn)
 
         # keep track if we already sent out a response
-        Cwmp.log.error("Device %s sending configuration", serial)
-        self.send_configuration(serial, True)
+        Cwmp.log.error("Device %s sending configuration", sn)
+        self.send_configuration(sn, True)
         response = make_response(Cwmp.m_common_header+render_template('SetParameterValues.jinja.xml',
                                                 cwmpid=23, params=params, length_params=len(params)))
         response.headers['Content-Type'] = 'text/xml'
@@ -113,16 +113,16 @@ class Cwmp:
 
     def handle_setparametervalues_response(self, tree, node):
         """ handle the setparams response """
-        serial = session['serial']
+        sn = session['sn']
         status = self.soap.get_cwmp_setresponse_status(node)
         if status is not None:
             if status == '0':
-                Cwmp.log.error("Device %s applied configuration changes without reboot", serial)
+                Cwmp.log.error("Device %s applied configuration changes without reboot", sn)
             elif status == '1':
-                Cwmp.log.error("Device %s applied configuration changes but require a reboot", serial)
+                Cwmp.log.error("Device %s applied configuration changes but require a reboot", sn)
             else:
-                Cwmp.log.error("Device %s returned unknown status value (%s)", serial)
-        self.send_configuration(serial, False)
+                Cwmp.log.error("Device %s returned unknown status value (%s)", sn)
+        self.send_configuration(sn, False)
         response = make_response()
         response.headers['Content-Type'] = 'text/xml'
         return response
@@ -130,13 +130,13 @@ class Cwmp:
     def handle_request(self, request):
         # when the client doesn't send us any data, it's ready for our request
         if not request.content_length:
-            if 'serial' not in session:
+            if 'sn' not in session:
                 Cwmp.log.error("Received an empty request from an unknown device. Can not generate configuration!")
                 return make_response()
-            if self.need_configuration(session['serial']):
+            if self.need_configuration(session['sn']):
                 return self.send_setparams()
 
-            Cwmp.log.error("Device %s already configured", session['serial'])
+            Cwmp.log.error("Device %s already configured", session['sn'])
             return make_response()
 
         # some request content data

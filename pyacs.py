@@ -10,7 +10,7 @@ from flask import Flask, request
 from flask_kvsession import KVSessionExtension
 from simplekv.fs import FilesystemStore
 
-
+DESCRIPTION = 'pyacs is a tr069 acs written by python'
 LOG = logging.getLogger("pyacs")
 STORE = FilesystemStore('./data')
 app = Flask("pyacs")
@@ -22,13 +22,13 @@ app.config.from_pyfile('./config/flask.py')
 
 @app.route('/', methods=['GET', 'POST'])
 def root():
-    return 'This is a tr069 acs'
+    return DESCRIPTION
 
 @app.route('/acs', methods=['GET', 'POST'])
 def acs():
     """ main tr069/acs entry point """
     if request.method == 'GET':
-        return 'This is a tr069 acs'
+        return DESCRIPTION
 
     if request.method != 'POST':
         return 'There is nothing to show'
@@ -39,10 +39,10 @@ def acs():
         return 'Wrong content type'
 
     result = cwmp.handle_request(request)
-    if not result:
+    if result:
         return result
-
-    return 'This is a tr069 acs written by python'
+    else:
+        return DESCRIPTION
 
 if __name__ == '__main__':
     app.run()

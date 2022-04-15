@@ -71,16 +71,16 @@ class Soap:
             events.append(evcodenode.text)
         return events
 
-    def get_cwmp_inform_serial(self, inform):
-        """ retrieve the serial from an inform node """
+    def get_cwmp_inform_sn(self, inform):
+        """ retrieve the sn from an inform node """
         device_id = inform.find('DeviceId')
         if device_id is None:
             return None
 
-        serial = device_id.find('SerialNumber')
-        if serial is None:
+        sn = device_id.find('SerialNumber')
+        if sn is None:
             return None
-        return serial.text
+        return sn.text
 
     def get_cwmp_setresponse_status(self, setparametervaluesresponse):
         """ retrieve the status from a setparametervaluesresponse node """

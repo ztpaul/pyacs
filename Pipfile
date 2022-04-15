@@ -9,6 +9,7 @@ eventlet = "*"
 flask-kvsession = "*"
 flask-caching = "*"
 waitress = "*"
+coloredlogs = "*"
 
 [dev-packages]
 

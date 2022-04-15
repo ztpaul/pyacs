@@ -19,7 +19,7 @@ class Soap:
         """ retrieve the cwmp method from the xml root Node """
         body = root.find('soap-env:Body', Soap.m_namespace)
         if body is None:
-            Soap.log.error('find soap-env:Body failed')
+            logging.error('find soap-env:Body failed')
             return None
 
         prefix = '{' + Soap.m_namespace['cwmp'] + '}'

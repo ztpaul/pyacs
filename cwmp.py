@@ -11,7 +11,6 @@ from flask_caching import Cache
 from soap import *
 
 class Cwmp:
-    log = logging.getLogger('Cwmp')
     m_common_header = \
 '<?xml version="1.0" encoding="UTF-8"?>\n\
 <soap-env:Envelope\n\
@@ -55,7 +54,7 @@ class Cwmp:
                     val, xmltype = config[section][key].split('|')
                     params[key] = {'value': val, 'xmltype': xmltype}
                 except:
-                    Cwmp.log.error("Failed to parse %s key %s with value %s", section, key, config[section][key])
+                    logging.error("Failed to parse %s key %s with value %s", section, key, config[section][key])
 
         read_config_to_params('Common')
 
@@ -72,9 +71,9 @@ class Cwmp:
         session['sn'] = sn
         if '0 BOOTSTRAP' in events or '1 BOOT' in events:
             self.send_configuration(sn, True)
-            Cwmp.log.error("Device %s booted", sn)
+            logging.error("Device %s booted", sn)
 
-        Cwmp.log.warn("Receive Inform form Device %s. cwmpipd=%s. Events=%s", sn, cwmpid, ", ".join(events))
+        logging.warn("Receive Inform form Device %s. cwmpipd=%s. Events=%s", sn, cwmpid, ", ".join(events))
         response = make_response(Cwmp.m_common_header+render_template('InformResponse.jinja.xml', cwmpid=cwmpid))
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
         response.headers['SOAPServer'] = 'pyacs'
@@ -88,7 +87,7 @@ class Cwmp:
     def handle_getrpcmethods(self, tree):
         cwmpid = self.soap.get_cwmp_id(tree)
 
-        Cwmp.log.warn("Receive GetRPCMethods")
+        logging.warn("Receive GetRPCMethods")
         response = make_response(Cwmp.m_common_header+render_template('GetRPCMethodsResponse.jinja.xml', cwmpid=cwmpid, method_list=Soap.m_methods, length=len(Soap.m_methods)))
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
         response.headers['SOAPServer'] = 'pyacs'
@@ -104,7 +103,7 @@ class Cwmp:
         params = self.generate_config(params, sn)
 
         # keep track if we already sent out a response
-        Cwmp.log.error("Device %s sending configuration", sn)
+        logging.warn("Device %s sending configuration", sn)
         self.send_configuration(sn, True)
         response = make_response(Cwmp.m_common_header+render_template('SetParameterValues.jinja.xml',
                                                 cwmpid=23, params=params, length_params=len(params)))
@@ -117,11 +116,11 @@ class Cwmp:
         status = self.soap.get_cwmp_setresponse_status(node)
         if status is not None:
             if status == '0':
-                Cwmp.log.error("Device %s applied configuration changes without reboot", sn)
+                logging.warn("Device %s applied configuration changes without reboot", sn)
             elif status == '1':
-                Cwmp.log.error("Device %s applied configuration changes but require a reboot", sn)
+                logging.warn("Device %s applied configuration changes but require a reboot", sn)
             else:
-                Cwmp.log.error("Device %s returned unknown status value (%s)", sn)
+                logging.error("Device %s returned unknown status value (%s)", sn)
         self.send_configuration(sn, False)
         response = make_response()
         response.headers['Content-Type'] = 'text/xml'
@@ -131,12 +130,12 @@ class Cwmp:
         # when the client doesn't send us any data, it's ready for our request
         if not request.content_length:
             if 'sn' not in session:
-                Cwmp.log.error("Received an empty request from an unknown device. Can not generate configuration!")
+                logging.error("Received an empty request from an unknown device. Can not generate configuration!")
                 return make_response()
             if self.need_configuration(session['sn']):
                 return self.send_setparams()
 
-            Cwmp.log.error("Device %s already configured", session['sn'])
+            logging.error("Device %s already configured", session['sn'])
             return make_response()
 
         # some request content data

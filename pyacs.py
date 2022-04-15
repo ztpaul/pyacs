@@ -4,24 +4,30 @@
 
 import configparser
 import logging
-from cwmp import Cwmp
+import coloredlogs
 
+from cwmp import Cwmp
 from flask import Flask, request
 from flask_kvsession import KVSessionExtension
 from simplekv.fs import FilesystemStore
 
-DESCRIPTION = 'pyacs is a tr069 acs written by python'
-LOG = logging.getLogger("pyacs")
-STORE = FilesystemStore('./data')
 app = Flask("pyacs")
 cwmp=Cwmp(app)
+DESCRIPTION = 'pyacs is a tr069 acs written by python'
 
-KVSessionExtension(STORE, app)
-app.config.from_pyfile('./config/flask.py')
+
+def main():
+    coloredlogs.install(level='INFO')
+
+    app.config.from_pyfile('./config/flask.py')
+    STORE = FilesystemStore('./data')
+    KVSessionExtension(STORE, app)
+    app.run(host='0.0.0.0',port=80)
 
 
 @app.route('/', methods=['GET', 'POST'])
 def root():
+    logging.info(request)
     return DESCRIPTION
 
 @app.route('/acs', methods=['GET', 'POST'])
@@ -35,7 +41,7 @@ def acs():
 
     # POST requests
     if request.content_type.find('text/xml')==-1:
-        LOG.error(f"request.content_type={request.content_type}")
+        logging.error(f"request.content_type={request.content_type}")
         return 'Wrong content type'
 
     result = cwmp.handle_request(request)
@@ -45,4 +51,4 @@ def acs():
         return DESCRIPTION
 
 if __name__ == '__main__':
-    app.run()
+    main()

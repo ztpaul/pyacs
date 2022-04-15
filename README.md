@@ -1,7 +1,8 @@
 # pyacs
 
-This is a tiny tr069 acs written by python. The following features have been finished.
-**RPC Methods** 
+pyacs is a tr069 acs written by python. The following features have been finished.
+
+**ACS RPC Methods** 
 - GetRPCMethods
 - Inform
 

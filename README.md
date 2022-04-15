@@ -8,7 +8,7 @@ pyacs is a tr069 acs written by python. The following features have been finishe
 
 # 2 Installation
 
-*make sure you have installed python3(3.10 is recommended) in your platform.*
+*Note - make sure you have installed python3(3.10 is recommended) in your platform.*
 
 
 ```sh
@@ -32,7 +32,8 @@ Please change the `SECRET_KEY` by generating your own. The `SECRET_KEY` is used 
 
 # 4 Running
 
-From within the repository call:
+*Note - "ManagementServer.URL" must be set to http://[ip]:80/acs in CPE*
+
 ```
 pipenv run python pyacs.py
 ```

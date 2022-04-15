@@ -32,7 +32,7 @@ Please change the `SECRET_KEY` by generating your own. The `SECRET_KEY` is used 
 
 # 4 Running
 
-*Note - "ManagementServer.URL" must be set to http://[ip]:80/acs in CPE*
+*Note - "ManagementServer.URL" must be set to "http://[ip]:80/acs" in CPE*
 
 ```
 pipenv run python pyacs.py

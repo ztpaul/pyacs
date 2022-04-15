@@ -10,12 +10,10 @@ from flask import Flask, request
 from flask_kvsession import KVSessionExtension
 from simplekv.fs import FilesystemStore
 
-from soap import *
 
 LOG = logging.getLogger("pyacs")
 STORE = FilesystemStore('./data')
 app = Flask("pyacs")
-soap = Soap()
 cwmp=Cwmp(app)
 
 KVSessionExtension(STORE, app)

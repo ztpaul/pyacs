@@ -111,7 +111,7 @@ class Cwmp:
         response.headers['Content-Type'] = 'text/xml'
         return response
 
-    def setparams_response(self, tree, node):
+    def handle_setparametervalues_response(self, tree, node):
         """ handle the setparams response """
         serial = session['serial']
         status = self.soap.get_cwmp_setresponse_status(node)
@@ -157,7 +157,7 @@ class Cwmp:
             case "Inform":
                 return self.handle_inform(tree, node)
             case "SetParameterValuesResponse":
-                return self.setparams_response(tree, node)
+                return self.handle_setparametervalues_response(tree, node)
 
 
 

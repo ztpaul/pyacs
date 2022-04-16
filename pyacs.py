@@ -5,12 +5,12 @@
 import configparser
 import logging
 import coloredlogs
-
-from cwmp import Cwmp
+from waitress import serve
 from flask import *
 from flask_httpauth import *
 from flask_kvsession import KVSessionExtension
 from simplekv.fs import FilesystemStore
+from cwmp import Cwmp
 
 DESCRIPTION = 'pyacs is a tr069 acs written by python'
 app = Flask("pyacs")
@@ -30,6 +30,7 @@ def main():
     STORE = FilesystemStore('./data')
     KVSessionExtension(STORE, app)
     app.run(host='0.0.0.0',port=80)
+    #serve(app, host='0.0.0.0', port=80)
 
 
 @app.route('/', methods=['GET', 'POST'])

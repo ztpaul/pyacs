@@ -66,7 +66,6 @@ class Cwmp:
         response = make_response()
         response.status_code = 401
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
-        response.headers['Connection'] = 'close'
         response.set_cookie('pyacs', 'pyacs_cookie')
         if authentication == 'Basic':
             response.headers['WWW-Authenticate'] = 'Basic realm="pyacs"'
@@ -77,7 +76,6 @@ class Cwmp:
         response = make_response()
         response.status_code = 403
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
-        response.headers['Connection'] = 'close'
         return response
 
     def handle_inform(self, tree, node):

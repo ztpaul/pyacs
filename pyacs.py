@@ -44,6 +44,7 @@ def verify_password(username, password):
     if username==config['local']['username'] and password==config['local']['password']:
         return username
     else:
+        request.get_data() # read the body if verify failed, or Werkzeug will raise 400 error.
         g.current_user = username
         return False #username or password error
 

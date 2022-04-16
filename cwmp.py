@@ -62,7 +62,7 @@ class Cwmp:
             read_config_to_params(sn)
         return params
 
-    def generate_unauthorized(self, authentication):
+    def make_401_response(self, authentication):
         response = make_response()
         response.status_code = 401
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
@@ -73,7 +73,7 @@ class Cwmp:
         return response
 
 
-    def generate_forbidden(self):
+    def make_403_response(self):
         response = make_response()
         response.status_code = 403
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
@@ -108,7 +108,7 @@ class Cwmp:
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
         return response
 
-    def send_setparams(self):
+    def make_setparametervalues_response(self):
         """ request a setparams """
         # e.g. params are {name: "arfcn", xmltype: "xsd:int", value: "23"}
         sn = session['sn']
@@ -124,7 +124,7 @@ class Cwmp:
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
         return response
 
-    def handle_setparametervalues_response(self, tree, node):
+    def handle_setparametervaluesresponse(self, tree, node):
         """ handle the setparams response """
         sn = session['sn']
         status = self.soap.get_cwmp_setresponse_status(node)
@@ -147,7 +147,7 @@ class Cwmp:
                 logging.error("Received an empty request from an unknown device. Can not generate configuration!")
                 return make_response()
             if self.need_configuration(session['sn']):
-                return self.send_setparams()
+                return self.make_setparametervalues_response()
 
             logging.warn("Device %s already configured", session['sn'])
             return make_response()
@@ -170,7 +170,7 @@ class Cwmp:
             case "Inform":
                 return self.handle_inform(tree, node)
             case "SetParameterValuesResponse":
-                return self.handle_setparametervalues_response(tree, node)
+                return self.handle_setparametervaluesresponse(tree, node)
 
 
 

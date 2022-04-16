@@ -51,9 +51,9 @@ def auth_error(status_code):
     #app.logger.error(f"status_code={status_code}, username={g.current_user}")
     if status_code == 401:
         if g.current_user:
-            return cwmp.generate_forbidden()
+            return cwmp.make_403_response()
         else:
-            return cwmp.generate_unauthorized(config['local']['authentication'])
+            return cwmp.make_401_response(config['local']['authentication'])
     # return "Access Denied", status_code
 
 

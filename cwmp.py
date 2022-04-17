@@ -89,7 +89,7 @@ class Cwmp:
             self.send_configuration(sn, True)
             logging.error("Device %s booted", sn)
 
-        logging.warn("Receive Inform form Device %s. cwmpipd=%s. Events=%s", sn, cwmpid, ", ".join(events))
+        logging.info("Receive Inform form Device %s. cwmpipd=%s. Events=%s", sn, cwmpid, ", ".join(events))
         response = make_response(Cwmp.m_common_header+render_template('InformResponse.jinja.xml', cwmpid=cwmpid))
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
         return response
@@ -101,7 +101,7 @@ class Cwmp:
     def handle_getrpcmethods(self, tree):
         cwmpid = self.soap.get_cwmp_id(tree)
 
-        logging.warn("Receive GetRPCMethods")
+        logging.info("Receive GetRPCMethods")
         response = make_response(Cwmp.m_common_header+render_template('GetRPCMethodsResponse.jinja.xml', cwmpid=cwmpid, method_list=Soap.m_methods, length=len(Soap.m_methods)))
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
         return response
@@ -115,7 +115,7 @@ class Cwmp:
         params = self.generate_config(params, sn)
 
         # keep track if we already sent out a response
-        logging.warn("Device %s sending configuration", sn)
+        logging.info("Device %s sending configuration", sn)
         self.send_configuration(sn, True)
         response = make_response(Cwmp.m_common_header+render_template('SetParameterValues.jinja.xml',
                                                 cwmpid=23, params=params, length_params=len(params)))
@@ -128,9 +128,9 @@ class Cwmp:
         status = self.soap.get_cwmp_setresponse_status(node)
         if status is not None:
             if status == '0':
-                logging.warn("Device %s applied configuration changes without reboot", sn)
+                logging.info("Device %s applied configuration changes without reboot", sn)
             elif status == '1':
-                logging.warn("Device %s applied configuration changes but require a reboot", sn)
+                logging.info("Device %s applied configuration changes but require a reboot", sn)
             else:
                 logging.error("Device %s returned unknown status value (%s)", sn)
         self.send_configuration(sn, False)
@@ -147,7 +147,7 @@ class Cwmp:
             if self.need_configuration(session['sn']):
                 return self.make_setparametervalues_response()
 
-            logging.warn("Device %s already configured", session['sn'])
+            logging.info("Device %s already configured", session['sn'])
             return make_response()
 
         # some request content data

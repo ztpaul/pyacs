@@ -29,8 +29,8 @@ def main():
     app.config.from_pyfile('./config/flask.py')
     STORE = FilesystemStore('./data')
     KVSessionExtension(STORE, app)
-    app.run(host='0.0.0.0',port=80)
-    #serve(app, host='0.0.0.0', port=80)
+    #app.run(host='0.0.0.0',port=80) #keep this if we need set 'Connection' of HTTP header
+    serve(app, host='0.0.0.0', port=80)
 
 
 @app.route('/', methods=['GET', 'POST'])

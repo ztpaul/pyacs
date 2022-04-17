@@ -78,7 +78,7 @@ class Cwmp:
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
         return response
 
-    def handle_inform(self, tree, node):
+    def handle_Inform(self, tree, node):
         """ handle a device Inform request """
         cwmpid = self.soap.get_cwmp_id(tree)
         sn = self.soap.get_cwmp_inform_sn(node)
@@ -98,7 +98,7 @@ class Cwmp:
     # description: handle a device GetRPCMethods request
     # input: tree
     #
-    def handle_getrpcmethods(self, tree):
+    def handle_GetRPCMethods(self, tree):
         cwmpid = self.soap.get_cwmp_id(tree)
 
         logging.info("Receive GetRPCMethods")
@@ -106,7 +106,7 @@ class Cwmp:
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
         return response
 
-    def make_setparametervalues_response(self):
+    def make_SetParameterValues_response(self):
         """ request a setparams """
         # e.g. params are {name: "arfcn", xmltype: "xsd:int", value: "23"}
         sn = session['sn']
@@ -122,7 +122,7 @@ class Cwmp:
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
         return response
 
-    def handle_setparametervaluesresponse(self, tree, node):
+    def handle_SetParameterValuesResponse(self, tree, node):
         """ handle the setparams response """
         sn = session['sn']
         status = self.soap.get_cwmp_setresponse_status(node)
@@ -145,7 +145,7 @@ class Cwmp:
                 logging.error("Received an empty request from an unknown device. Can not generate configuration!")
                 return make_response()
             if self.need_configuration(session['sn']):
-                return self.make_setparametervalues_response()
+                return self.make_SetParameterValues_response()
 
             logging.info("Device %s already configured", session['sn'])
             return make_response()
@@ -164,11 +164,11 @@ class Cwmp:
 
         match method:
             case "GetRPCMethods":
-                return self.handle_getrpcmethods(tree)
+                return self.handle_GetRPCMethods(tree)
             case "Inform":
-                return self.handle_inform(tree, node)
+                return self.handle_Inform(tree, node)
             case "SetParameterValuesResponse":
-                return self.handle_setparametervaluesresponse(tree, node)
+                return self.handle_SetParameterValuesResponse(tree, node)
 
 
 

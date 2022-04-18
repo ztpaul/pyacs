@@ -88,7 +88,7 @@ class Cwmp:
             logging.error("Device %s booted", sn)
 
         logging.info("Receive Inform form Device %s. cwmpipd=%s. Events=%s", sn, cwmpid, ", ".join(events))
-        response = make_response(Cwmp.m_common_header+render_template('InformResponse.jinja.xml', cwmpid=cwmpid))
+        response = make_response(Cwmp.m_common_header+render_template('cwmp/InformResponse.jinja.xml', cwmpid=cwmpid))
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
         return response
 
@@ -100,7 +100,7 @@ class Cwmp:
         cwmpid = self.soap.get_cwmp_id(tree)
 
         logging.info("Receive GetRPCMethods")
-        response = make_response(Cwmp.m_common_header+render_template('GetRPCMethodsResponse.jinja.xml', cwmpid=cwmpid, method_list=Soap.m_methods, length=len(Soap.m_methods)))
+        response = make_response(Cwmp.m_common_header+render_template('cwmp/GetRPCMethodsResponse.jinja.xml', cwmpid=cwmpid, method_list=Soap.m_methods, length=len(Soap.m_methods)))
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
         return response
 
@@ -115,7 +115,7 @@ class Cwmp:
         # keep track if we already sent out a response
         logging.info("Device %s sending configuration", sn)
         self.send_configuration(sn, True)
-        response = make_response(Cwmp.m_common_header+render_template('SetParameterValues.jinja.xml',
+        response = make_response(Cwmp.m_common_header+render_template('cwmp/SetParameterValues.jinja.xml',
                                                 cwmpid=23, params=params, length_params=len(params)))
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
         return response

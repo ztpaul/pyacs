@@ -62,13 +62,11 @@ class Cwmp:
             read_config_to_params(sn)
         return params
 
-    def make_401_response(self, authentication):
+    def make_401_response(self, header):
         response = make_response()
         response.status_code = 401
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
-        response.set_cookie('pyacs', 'pyacs_cookie')
-        if authentication == 'Basic':
-            response.headers['WWW-Authenticate'] = 'Basic realm="pyacs"'
+        response.headers['WWW-Authenticate'] = header
         return response
 
 

@@ -3,7 +3,6 @@
 # (C) 2021 by sysmocom - s.f.m.c. GmbH <info@sysmocom.de>
 
 import configparser
-import logging
 import coloredlogs
 from waitress import serve
 from flask import *
@@ -13,18 +12,19 @@ from simplekv.fs import FilesystemStore
 from cwmp import Cwmp
 
 DESCRIPTION = 'pyacs is a tr069 acs written by python'
-app = Flask("pyacs")
-basic_auth = HTTPBasicAuth()
-digest_auth = HTTPDigestAuth()
-multi_auth = MultiAuth(basic_auth,  digest_auth)
+APP_NAME = 'pyacs'
+app = Flask(APP_NAME)
+basic_auth = HTTPBasicAuth(realm=APP_NAME)
+digest_auth = HTTPDigestAuth(realm=APP_NAME)
+multi_auth = MultiAuth(basic_auth,  digest_auth) # assume basic auth is the main auth
 cwmp=Cwmp(app)
 config = configparser.ConfigParser()
 
 
 def main():
-    config.read("./config/pyacs.ini")
+    coloredlogs.install(level='INFO', fmt="%(asctime)s [%(name)s] [%(levelname)s] [%(funcName)s(%(lineno)d)] %(message)s")
 
-    coloredlogs.install(level='INFO')
+    config.read("./config/pyacs.ini")
 
     app.config.from_pyfile('./config/flask.py')
     STORE = FilesystemStore('./data')
@@ -35,28 +35,51 @@ def main():
 
 @app.route('/', methods=['GET', 'POST'])
 def root():
-    logging.info(request)
+    app.logger.info(request)
     return DESCRIPTION
 
 @basic_auth.verify_password
-def verify_password(username, password):
-    #app.logger.error(f"username={username}, password={password}")
+def basic_verify_password(username, password):
+    g.username = username # use g.username to indicate no 'Www-Authenticate' header or wrong 'Www-Authenticate' header
+
+    app.logger.debug(f"username={username}, password={password}")
     if username==config['local']['username'] and password==config['local']['password']:
         return username
     else:
         request.get_data() # read the body if verify failed, or Werkzeug will raise 400 error.
-        g.current_user = username
         return False #username or password error
 
+
 @basic_auth.error_handler
-def auth_error(status_code):
-    #app.logger.error(f"status_code={status_code}, username={g.current_user}")
+def basic_auth_error(status_code):
+    app.logger.warning(f"status_code={status_code}, g.username={g.username}")
     if status_code == 401:
-        if g.current_user:
+        if g.username:
             return cwmp.make_403_response()
         else:
-            return cwmp.make_401_response(config['local']['authentication'])
-    # return "Access Denied", status_code
+            if(config['local']['authentication'] == 'Basic'):
+                return cwmp.make_401_response(basic_auth.authenticate_header())
+            else:
+                return cwmp.make_401_response(digest_auth.authenticate_header())
+
+
+@digest_auth.get_password
+def digest_get_password(username):
+    app.logger.debug(f"username={username}")
+    if username == config['local']['username']:
+        return config['local']['password']
+    
+    app.logger.warning(f"get password failed, username={username}")
+    return None
+
+
+@digest_auth.error_handler
+def digest_auth_error(status_code):
+    app.logger.warning(f"status_code={status_code}")
+
+    if status_code == 401:
+        return cwmp.make_403_response()
+            
 
 
 @app.route('/acs', methods=['GET', 'POST'])
@@ -69,7 +92,7 @@ def acs():
     if request.method != 'POST':
         return 'There is nothing to show'
 
-    #app.logger.error(request.headers)
+    app.logger.debug(f"request.headers={request.headers}")
 
 
     # POST requests

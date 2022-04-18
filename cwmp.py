@@ -136,7 +136,7 @@ class Cwmp:
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
         return response
 
-    def handle_request(self, request):
+    def handle_POST(self, request):
         # when the client doesn't send us any data, it's ready for our request
         if not request.content_length:
             if 'sn' not in session:

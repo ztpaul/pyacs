@@ -1,0 +1,38 @@
+<html>
+
+    <head>
+        <script type = "text/javascript" src = "{{ url_for('static', filename = 'index.js') }}" ></script>
+    </head>
+
+    <body>
+        <center>
+            <br/>
+            <br/>
+            <br/>
+            <h1>ACS Initiate Connection</h1>
+            <br/>
+            <br/>
+            <br/>
+            <form action="/" method="post" onsubmit="return check()">
+                <h2>
+                    <span style="width:300px;">Method:</span>
+                    <select id="method" name="method" style="width:600px;">
+                        <option selected="selected">GetParameterValues</option>
+                        <option>SetParameterValues</option>
+                        <option>AddObject</option>
+                        <option>DeleteObject</option>
+                    </select>
+                </h2>
+                <br/>
+                <h2>
+                    <span style="width:300px;">Path:</span>
+                    <input type="text" id="path" name="path" style="width:600px;">
+                </h2>
+                <br/>
+                <br/>
+                <br/>
+                <input style="font-size:40px"  type="submit" value="submit">
+            </form>
+        </center>
+    </body>
+</html>

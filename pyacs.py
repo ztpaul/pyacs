@@ -3,6 +3,8 @@
 # (C) 2021 by sysmocom - s.f.m.c. GmbH <info@sysmocom.de>
 
 import configparser
+
+#from requests import request
 import coloredlogs
 from waitress import serve
 from flask import *
@@ -10,14 +12,16 @@ from flask_httpauth import *
 from flask_kvsession import KVSessionExtension
 from simplekv.fs import FilesystemStore
 from cwmp import Cwmp
+from web import Web
 
 DESCRIPTION = 'pyacs is a tr069 acs written by python'
 APP_NAME = 'pyacs'
-app = Flask(APP_NAME)
+app = Flask(APP_NAME, static_folder='templates/web/')
 basic_auth = HTTPBasicAuth(realm=APP_NAME)
 digest_auth = HTTPDigestAuth(realm=APP_NAME)
 multi_auth = MultiAuth(basic_auth,  digest_auth) # assume basic auth is the main auth
 cwmp=Cwmp(app)
+web=Web()
 config = configparser.ConfigParser()
 
 
@@ -36,7 +40,12 @@ def main():
 @app.route('/', methods=['GET', 'POST'])
 def root():
     app.logger.info(request)
-    return DESCRIPTION
+    if request.method == 'GET':
+        return web.handle_GET()
+    elif request.method == 'POST':
+        return web.handle_POST(request.form)
+        
+
 
 @basic_auth.verify_password
 def basic_verify_password(username, password):
@@ -99,7 +108,7 @@ def acs():
         app.logger.error(f"request.content_type={request.content_type}")
         return 'Wrong content type'
 
-    result = cwmp.handle_request(request)
+    result = cwmp.handle_POST(request)
     if result:
         return result
     else:

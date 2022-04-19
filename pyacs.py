@@ -18,7 +18,7 @@ DESCRIPTION = 'pyacs is a tr069 acs written by python'
 APP_NAME = 'pyacs'
 app = Flask(APP_NAME, static_folder='templates/web/')
 basic_auth = HTTPBasicAuth(realm=APP_NAME)
-digest_auth = HTTPDigestAuth(realm=APP_NAME)
+digest_auth = HTTPDigestAuth(realm=APP_NAME, qop='auth')
 multi_auth = MultiAuth(basic_auth,  digest_auth) # assume basic auth is the main auth
 cwmp=Cwmp(app)
 web=Web()

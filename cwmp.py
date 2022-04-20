@@ -12,6 +12,9 @@ from flask import make_response, render_template, session
 from soap import *
 
 class Cwmp:
+    mSoap = Soap()
+    mPyacsConfig = configparser.ConfigParser()
+    mPyacsConfig.read("./config/pyacs.ini")
     m_common_header = \
 '<?xml version="1.0" encoding="UTF-8"?>\n\
 <soap-env:Envelope\n\
@@ -22,10 +25,9 @@ class Cwmp:
     xmlns:cwmp="urn:dslforum-org:cwmp-1-2">\n'
 
     def __init__(self):
-        self.soap = Soap()
-        self.config = configparser.ConfigParser()
-        self.config.read("./config/pyacs.ini")
         self.mConnectionRequestURL = ''
+        self.pending_method = 'SetParameterValues' # run SetParameterValues to set default values for each CPE
+        self.pending_arg = 'common' #arguments related to pending_method, can be a TR098/TR181 path or config section
     
     def set_cache(self, cache):
         self.mCache = cache
@@ -42,13 +44,18 @@ class Cwmp:
             return True
         return need
 
-    def generate_config(self, params=None, sn=None, config_file='./config/tr098.ini'):
+
+
+    def generate_config(self):
         """ return a params dict for setparams from the config file """
-        if params is None:
-            params = {}
+        params = {}
 
         config = configparser.ConfigParser()
         config.optionxform=str
+        if Cwmp.mPyacsConfig['local']['DataModel'] == 'tr098':
+            config_file = './config/tr098.ini'
+        else:
+            config_file = './config/tr181.ini'
         config.read(config_file)
 
         def read_config_to_params(section):
@@ -59,11 +66,11 @@ class Cwmp:
                 except:
                     logging.error("Failed to parse %s key %s with value %s", section, key, config[section][key])
 
-        read_config_to_params('Common')
+        read_config_to_params(self.pending_arg)
 
-        if sn and sn in config:
-            read_config_to_params(sn)
         return params
+
+
 
     def make_401_response(self, header):
         response = make_response()
@@ -81,11 +88,11 @@ class Cwmp:
 
     def handle_Inform(self, tree, node):
         """ handle a device Inform request """
-        cwmpid = self.soap.get_cwmp_id(tree)
-        sn = self.soap.get_cwmp_inform_sn(node)
-        events = self.soap.get_cwmp_inform_events(node)
+        cwmpid = Cwmp.mSoap.get_cwmp_id(tree)
+        sn = Cwmp.mSoap.get_cwmp_inform_sn(node)
+        events = Cwmp.mSoap.get_cwmp_inform_events(node)
 
-        self.mConnectionRequestURL = self.soap.get_cwmp_inform_value(node, 'ManagementServer.ConnectionRequestURL')
+        self.mConnectionRequestURL = Cwmp.mSoap.get_cwmp_inform_value(node, 'ManagementServer.ConnectionRequestURL')
 
         session['sn'] = sn
         if '0 BOOTSTRAP' in events or '1 BOOT' in events:
@@ -108,7 +115,7 @@ class Cwmp:
     # return: response to CPE
     #########################################################################################################
     def handle_GetRPCMethods(self, tree):
-        cwmpid = self.soap.get_cwmp_id(tree)
+        cwmpid = Cwmp.mSoap.get_cwmp_id(tree)
 
         logging.info("Receive GetRPCMethods")
         response = make_response(Cwmp.m_common_header+render_template('cwmp/GetRPCMethodsResponse.jinja.xml', cwmpid=cwmpid, method_list=Soap.m_methods, length=len(Soap.m_methods)))
@@ -121,7 +128,7 @@ class Cwmp:
         sn = session['sn']
 
         params = {}
-        params = self.generate_config(params, sn)
+        params = self.generate_config()
 
         # keep track if we already sent out a response
         logging.info("Device %s sending configuration", sn)
@@ -134,7 +141,7 @@ class Cwmp:
     def handle_SetParameterValuesResponse(self, tree, node):
         """ handle the setparams response """
         sn = session['sn']
-        status = self.soap.get_cwmp_setresponse_status(node)
+        status = Cwmp.mSoap.get_cwmp_setresponse_status(node)
         if status is not None:
             if status == '0':
                 logging.info("Device %s applied configuration changes without reboot", sn)
@@ -165,7 +172,7 @@ class Cwmp:
         except:
             return 'Could not parse the request as XML'
 
-        method = self.soap.get_cwmp_method(tree) #here method is a tuple of "method string" and related "xml.etree.ElementTree.Element"
+        method = Cwmp.mSoap.get_cwmp_method(tree) #here method is a tuple of "method string" and related "xml.etree.ElementTree.Element"
         if not method:
             return 'Failed to get the cwmp method'
 
@@ -183,8 +190,8 @@ class Cwmp:
         response = requests.get(self.mConnectionRequestURL)
         logging.info(f"code={response.status_code}, headers={response.headers}")
         if response.status_code == 401:
-            username = self.config['cpe']['username']
-            password = self.config['cpe']['password']
+            username = Cwmp.mPyacsConfig['cpe']['username']
+            password = Cwmp.mPyacsConfig['cpe']['password']
             if 'Digest' in response.headers['WWW-Authenticate']:
                 response = requests.get(self.mConnectionRequestURL,auth=HTTPDigestAuth(username,password))
             elif 'Basic' in response.headers['WWW-Authenticate']:

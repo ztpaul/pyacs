@@ -6,7 +6,6 @@
 import logging
 
 class Soap:
-    log = logging.getLogger('Soap')
     m_methods = ('GetRPCMethods', 'Inform') #RPC methods that ACS have supported.
     m_namespace = {
         'soap-env': 'http://schemas.xmlsoap.org/soap/envelope/',
@@ -81,6 +80,36 @@ class Soap:
         if sn is None:
             return None
         return sn.text
+
+
+
+    #########################################################################################################
+    # description: get the value of a partial leaf path, such as ManagementServer.ConnectionRequestURL.
+    #              We can't use the absolute path because we must support both TR098 and TR181.
+    #
+    # input:  inform - whole inform soap message
+    #         partial_leaf_path - partial leaf path, such as ManagementServer.ConnectionRequestURL.
+    #
+    # output: none
+    #
+    # return: success - value of the partial leaf path
+    #         fail  - None
+    ##########################################################################################################
+    def get_cwmp_inform_value(self, inform, partial_leaf_path):
+        """ retrieve the value of partial from an inform message """
+        parameter_list = inform.find('ParameterList')
+        if parameter_list is None:
+            return None
+
+        for parameter in parameter_list.iter('ParameterValueStruct'):
+            name =  parameter.find('Name')
+            if partial_leaf_path in name.text:
+                logging.info(parameter.find('Value').text)
+                return parameter.find('Value').text
+
+        return None
+
+
 
     def get_cwmp_setresponse_status(self, setparametervaluesresponse):
         """ retrieve the status from a setparametervaluesresponse node """

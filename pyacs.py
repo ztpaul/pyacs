@@ -10,6 +10,7 @@ from waitress import serve
 from flask import *
 from flask_httpauth import *
 from flask_kvsession import KVSessionExtension
+from flask_caching import Cache
 from simplekv.fs import FilesystemStore
 from cwmp import Cwmp
 from web import Web
@@ -20,13 +21,18 @@ app = Flask(APP_NAME, static_folder='templates/web/')
 basic_auth = HTTPBasicAuth(realm=APP_NAME)
 digest_auth = HTTPDigestAuth(realm=APP_NAME, qop='auth')
 multi_auth = MultiAuth(basic_auth,  digest_auth) # assume basic auth is the main auth
-cwmp=Cwmp(app)
-web=Web()
+cwmp=Cwmp()
+web=Web(cwmp)
 config = configparser.ConfigParser()
 
 
 def main():
     coloredlogs.install(level='INFO', fmt="%(asctime)s [%(name)s] [%(levelname)s] [%(funcName)s(%(lineno)d)] %(message)s")
+
+    cache = Cache()
+    cache.init_app(app=app, config={"CACHE_TYPE": 'FileSystemCache', "CACHE_DIR": "./cache"})
+    cache.clear()
+    cwmp.set_cache(cache)
 
     config.read("./config/pyacs.ini")
 
@@ -37,6 +43,7 @@ def main():
     serve(app, host='0.0.0.0', port=80)
 
 
+#
 @app.route('/', methods=['GET', 'POST'])
 def root():
     app.logger.info(request)
@@ -45,6 +52,34 @@ def root():
     elif request.method == 'POST':
         return web.handle_POST(request.form)
         
+            
+
+
+@app.route('/acs', methods=['GET', 'POST'])
+@multi_auth.login_required
+def acs():
+    """ main tr069/acs entry point """
+    app.logger.debug(f"method={request.method},headers={request.headers}")
+
+    if request.method == 'GET':
+        return DESCRIPTION
+
+    if request.method != 'POST':
+        return 'There is nothing to show'
+
+    app.logger.debug(f"request.headers={request.headers}")
+
+
+    # POST requests
+    if request.content_type.find('text/xml')==-1:
+        app.logger.error(f"request.content_type={request.content_type}")
+        return 'Wrong content type'
+
+    result = cwmp.handle_POST(request)
+    if result:
+        return result
+    else:
+        return DESCRIPTION
 
 
 @basic_auth.verify_password
@@ -87,33 +122,6 @@ def digest_auth_error(status_code):
 
     if status_code == 401:
         return cwmp.make_403_response()
-            
-
-
-@app.route('/acs', methods=['GET', 'POST'])
-@multi_auth.login_required
-def acs():
-    """ main tr069/acs entry point """
-    if request.method == 'GET':
-        return DESCRIPTION
-
-    if request.method != 'POST':
-        return 'There is nothing to show'
-
-    app.logger.debug(f"request.headers={request.headers}")
-
-
-    # POST requests
-    if request.content_type.find('text/xml')==-1:
-        app.logger.error(f"request.content_type={request.content_type}")
-        return 'Wrong content type'
-
-    result = cwmp.handle_POST(request)
-    if result:
-        return result
-    else:
-        return DESCRIPTION
-
 
 
 if __name__ == '__main__':

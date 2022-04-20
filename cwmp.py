@@ -5,9 +5,10 @@
 import configparser
 import logging
 from xml.etree.ElementTree import fromstring
+import requests
+from requests.auth import HTTPDigestAuth, HTTPBasicAuth
 
 from flask import make_response, render_template, session
-from flask_caching import Cache
 from soap import *
 
 class Cwmp:
@@ -20,22 +21,24 @@ class Cwmp:
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"\n\
     xmlns:cwmp="urn:dslforum-org:cwmp-1-2">\n'
 
-    def __init__(self, app):
+    def __init__(self):
         self.soap = Soap()
-        cache = Cache()
-        cache.init_app(app=app, config={"CACHE_TYPE": 'FileSystemCache', "CACHE_DIR": "./cache"})
-        cache.clear()
-        self.cache = cache
+        self.config = configparser.ConfigParser()
+        self.config.read("./config/pyacs.ini")
+        self.mConnectionRequestURL = ''
+    
+    def set_cache(self, cache):
+        self.mCache = cache
 
     def send_configuration(self, sn, push):
         """ write to the 'database' if this sn needs a configuration """
-        self.cache.set(sn, push)
+        self.mCache.set(sn, push)
 
     def need_configuration(self, sn):
         """ does this device needs a new configuration? """
-        need = self.cache.get(sn)
+        need = self.mCache.get(sn)
         if need is None:
-            self.cache.set(sn, True)
+            self.mCache.set(sn, True)
             return True
         return need
 
@@ -82,6 +85,8 @@ class Cwmp:
         sn = self.soap.get_cwmp_inform_sn(node)
         events = self.soap.get_cwmp_inform_events(node)
 
+        self.mConnectionRequestURL = self.soap.get_cwmp_inform_value(node, 'ManagementServer.ConnectionRequestURL')
+
         session['sn'] = sn
         if '0 BOOTSTRAP' in events or '1 BOOT' in events:
             self.send_configuration(sn, True)
@@ -93,9 +98,15 @@ class Cwmp:
         return response
 
 
+    #########################################################################################################
     # description: handle a device GetRPCMethods request
-    # input: tree
     #
+    # input:  tree - whole request data
+    #
+    # output: none
+    #
+    # return: response to CPE
+    #########################################################################################################
     def handle_GetRPCMethods(self, tree):
         cwmpid = self.soap.get_cwmp_id(tree)
 
@@ -168,5 +179,18 @@ class Cwmp:
             case "SetParameterValuesResponse":
                 return self.handle_SetParameterValuesResponse(tree, node)
 
+    def send_GET(self):
+        response = requests.get(self.mConnectionRequestURL)
+        logging.info(f"code={response.status_code}, headers={response.headers}")
+        if response.status_code == 401:
+            username = self.config['cpe']['username']
+            password = self.config['cpe']['password']
+            if 'Digest' in response.headers['WWW-Authenticate']:
+                response = requests.get(self.mConnectionRequestURL,auth=HTTPDigestAuth(username,password))
+            elif 'Basic' in response.headers['WWW-Authenticate']:
+                response = requests.get(self.mConnectionRequestURL,auth=HTTPBasicAuth(username,password))
+            else:
+                logging.error("unknown auth header, headers={response.headers}")
 
+            logging.info(f"code={response.status_code}, headers={response.headers}")
 

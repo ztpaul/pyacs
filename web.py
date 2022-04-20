@@ -5,14 +5,14 @@
 import logging
 from flask import render_template
 
-class Web:
-    log = logging.getLogger('web')
-        
-
+class Web:       
+    def __init__(self, cwmp):
+        self.cwmp =cwmp
 
     def handle_GET(self):
         return render_template('web/index.html')
 
     def handle_POST(self, form):
-        self.log.info(f"method={form['method']}, path={form['path']}")
+        logging.info(f"method={form['method']}, path={form['path']}")
+        self.cwmp.send_GET()
         return render_template('web/index.html')

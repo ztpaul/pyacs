@@ -1,3 +1,3 @@
-function sayHello() {
-    alert("Hello World")
+function OnSubmit() {
+    return true
  }

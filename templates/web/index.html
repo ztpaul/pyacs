@@ -2,37 +2,45 @@
 
     <head>
         <script type = "text/javascript" src = "{{ url_for('static', filename = 'index.js') }}" ></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
     </head>
 
     <body>
-        <center>
+        <br/>
+        <br/>
+        <br/>
+        <h1>ACS Initiate Connection</h1>
+        <br/>
+        <br/>
+        <br/>
+        <form action="/" method="post" onsubmit="OnSubmit">
+            <center>
+                <table>
+                    <tr>
+                        <td>method:</td>
+                        <td>
+                            <select id="method" name="method">
+                                <option selected="selected">GetParameterValues</option>
+                                <option>SetParameterValues</option>
+                                <option>AddObject</option>
+                                <option>DeleteObject</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td>path:</td>
+                        <td>
+                            <input type="text" id="path" name="path">
+                        </td>
+                    </tr>
+                    
+                </table>
+            </center>
             <br/>
             <br/>
             <br/>
-            <h1>ACS Initiate Connection</h1>
-            <br/>
-            <br/>
-            <br/>
-            <form action="/" method="post" onsubmit="return check()">
-                <h2>
-                    <span style="width:300px;">Method:</span>
-                    <select id="method" name="method" style="width:600px;">
-                        <option selected="selected">GetParameterValues</option>
-                        <option>SetParameterValues</option>
-                        <option>AddObject</option>
-                        <option>DeleteObject</option>
-                    </select>
-                </h2>
-                <br/>
-                <h2>
-                    <span style="width:300px;">Path:</span>
-                    <input type="text" id="path" name="path" style="width:600px;">
-                </h2>
-                <br/>
-                <br/>
-                <br/>
-                <input style="font-size:40px"  type="submit" value="submit">
-            </form>
-        </center>
+            <center> <button class="button"  type="submit">Submit</button></center>
+        </form>
     </body>
 </html>

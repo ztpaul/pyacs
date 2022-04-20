@@ -1,8 +1,8 @@
 <html>
 
     <head>
-        <script type = "text/javascript" src = "{{ url_for('static', filename = 'index.js') }}" ></script>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+        <script type = "text/javascript" src = "index.js" ></script>
+        <link rel="stylesheet" type="text/css" href="index.css">
     </head>
 
     <body>
@@ -19,28 +19,28 @@
                     <tr>
                         <td>method:</td>
                         <td>
-                            <select id="method" name="method">
-                                <option selected="selected">GetParameterValues</option>
-                                <option>SetParameterValues</option>
-                                <option>AddObject</option>
-                                <option>DeleteObject</option>
+                            <select id="selectMethod" onchange="OnChangeMethod(this.value)">
+                                <option value="GetParameterValues" selected="selected">GetParameterValues</option>
+                                <option value="SetParameterValues">SetParameterValues</option>
+                                <option value="AddObject">AddObject</option>
+                                <option value="DeleteObject">DeleteObject</option>
                             </select>
                         </td>
-                    </tr>
-                    <tr></tr>
-                    <tr>
                         <td>path:</td>
                         <td>
-                            <input type="text" required="required" id="arg" name="arg">
+                            <input style="width:600px" type="text" required="required" id="path">
+                        </td>
+                        <td id="tdValue">value:</td>
+                        <td id="tdInputValue">
+                            <input style="width:160px" type="text" required="required" id="inputValue">
+                        </td>
+                        <td>
+                            <button class="button"  type="submit">Submit</button>
                         </td>
                     </tr>
                     
                 </table>
             </center>
-            <br/>
-            <br/>
-            <br/>
-            <center> <button class="button"  type="submit">Submit</button></center>
         </form>
     </body>
 </html>

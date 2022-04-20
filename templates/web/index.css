@@ -19,64 +19,31 @@ h1{
     text-align:center; 
    }
 
-h2{   
-    font-size: 1.5em;   
-    margin: 0.67em 0;
-    text-align:center; 
-   }
-
 table{
     border-collapse:separate; 
-    border-spacing:20px 20px;
-    font-size: 35px;
+    border-spacing:3px 1px;
 }
 
 td{
-    width: 140px;
-    text-align:right;
+    text-align:left;
+    font-size: 20px;
+    height: 25;
+    background-color: #808080;
 }
 
-input{   
-    width: 600px;   
-    height: 35px;   
-    margin-bottom: 10px;   
+input{
     outline: none;   
-    padding: 10px;   
-    font-size: 13px;   
-    color: #fff;    
-    border-top: 1px solid #312E3D;   
-    border-left: 1px solid #312E3D;   
-    border-right: 1px solid #312E3D;   
-    border-bottom: 1px solid #56536A;   
-    border-radius: 4px;   
-    background-color: #2D2D3F;   
    }
 
 select{   
-    width: 600px;   
-    height: 35px;   
-    margin-bottom: 10px;   
+    width: 160px;   
+    vertical-align: middle;  
     outline: none;   
-    font-size: 13px;   
-    color: #fff;    
-    border-top: 1px solid #312E3D;   
-    border-left: 1px solid #312E3D;   
-    border-right: 1px solid #312E3D;   
-    border-bottom: 1px solid #56536A;   
-    border-radius: 4px;   
-    background-color: #2D2D3F;   
    }
 
 .button{   
-    width: 160px;   
-    min-height: 20px;   
-    display: block;   
-    background-color: #4a77d4;   
-    border: 1px solid #3762bc;   
-    color: #fff;   
-    padding: 9px 14px;   
-    font-size: 30px;   
+    width: 80px;   
+    display: block;       
     line-height: normal;   
-    border-radius: 5px;   
     margin: 0;
    }

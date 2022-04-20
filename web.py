@@ -13,6 +13,6 @@ class Web:
         return render_template('web/index.html')
 
     def handle_POST(self, form):
-        logging.info(f"method={form['method']}, path={form['path']}")
-        self.cwmp.send_GET()
+        logging.info(f"method={form['method']}, arg={form['arg']}")
+        self.cwmp.send_GET(form['method'], form['arg'])
         return render_template('web/index.html')

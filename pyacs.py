@@ -10,7 +10,6 @@ from waitress import serve
 from flask import *
 from flask_httpauth import *
 from flask_kvsession import KVSessionExtension
-from flask_caching import Cache
 from simplekv.fs import FilesystemStore
 from cwmp import Cwmp
 from web import Web
@@ -28,11 +27,6 @@ config = configparser.ConfigParser()
 
 def main():
     coloredlogs.install(level='INFO', fmt="%(asctime)s [%(name)s] [%(levelname)s] [%(funcName)s(%(lineno)d)] %(message)s")
-
-    cache = Cache()
-    cache.init_app(app=app, config={"CACHE_TYPE": 'FileSystemCache', "CACHE_DIR": "./cache"})
-    cache.clear()
-    cwmp.set_cache(cache)
 
     config.read("./config/pyacs.ini")
 

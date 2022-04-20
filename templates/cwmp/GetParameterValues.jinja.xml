@@ -1,0 +1,14 @@
+    <soap-env:Header>
+        <cwmp:ID soap-env:mustUnderstand="1">{{ cwmpip }}</cwmp:ID>
+    </soap-env:Header>
+    <soap-env:Body>
+        <cwmp:GetParameterValues>
+            <ParameterNames soap-enc:arrayType="xsd:string[{{ length }}]">
+                {%- for obj in params %}
+                    <string>{{ obj }}</string>
+                {%- endfor %}
+            </ParameterNames>
+        </cwmp:GetParameterValues>
+    </soap-env:Body>
+</soap-env:Envelope>
+

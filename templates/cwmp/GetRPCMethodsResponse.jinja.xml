@@ -3,10 +3,9 @@
     </soap-env:Header>
     <soap-env:Body>
         <cwmp:GetRPCMethodsResponse>
-            <MethodList soap-enc:arrayType="xsd:string[{{ length }}]">
-                {%- for obj in method_list %}
-                <string>{{ obj }}</string>
-                {%- endfor %}
+            <MethodList soap-enc:arrayType="xsd:string[2]">
+                <string>GetRPCMethods</string>
+                <string>Inform</string>
             </MethodList>
         </cwmp:GetRPCMethodsResponse>
     </soap-env:Body>

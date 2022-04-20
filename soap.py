@@ -6,7 +6,6 @@
 import logging
 
 class Soap:
-    m_methods = ('GetRPCMethods', 'Inform') #RPC methods that ACS have supported.
     m_namespace = {
         'soap-env': 'http://schemas.xmlsoap.org/soap/envelope/',
         'cwmp': 'urn:dslforum-org:cwmp-1-2'
@@ -23,12 +22,8 @@ class Soap:
 
         prefix = '{' + Soap.m_namespace['cwmp'] + '}'
         for child in body:
-            for method in Soap.m_methods:            
-                if child.tag == prefix + method:
-                    return (method, child)
-
-            if child.tag == prefix+ 'SetParameterValuesResponse':
-                return ('SetParameterValuesResponse', child)
+            if prefix in child.tag:
+                return (child.tag[len(prefix):], child)
         return None
 
     def get_cwmp_id(self, root):
@@ -84,10 +79,10 @@ class Soap:
 
 
     #########################################################################################################
-    # description: get the value of a partial leaf path, such as ManagementServer.ConnectionRequestURL.
+    # description: get the value of a partial leaf path from soap message, such as ManagementServer.ConnectionRequestURL.
     #              We can't use the absolute path because we must support both TR098 and TR181.
     #
-    # input:  inform - whole inform soap message
+    # input:  node - whole soap message
     #         partial_leaf_path - partial leaf path, such as ManagementServer.ConnectionRequestURL.
     #
     # output: none
@@ -95,9 +90,9 @@ class Soap:
     # return: success - value of the partial leaf path
     #         fail  - None
     ##########################################################################################################
-    def get_cwmp_inform_value(self, inform, partial_leaf_path):
+    def get_cwmp_value(self, node, partial_leaf_path):
         """ retrieve the value of partial from an inform message """
-        parameter_list = inform.find('ParameterList')
+        parameter_list = node.find('ParameterList')
         if parameter_list is None:
             return None
 
@@ -110,6 +105,19 @@ class Soap:
         return None
 
 
+    def get_cwmp_all_value(self, node):
+        parameterDict = {}
+        parameter_list = node.find('ParameterList')
+        if parameter_list is None:
+            return None
+        
+        for parameter in parameter_list.iter('ParameterValueStruct'):
+            name =  parameter.find('Name')
+            value =  parameter.find('Value')
+            parameterDict[name.text] = value.text
+    
+        return parameterDict
+
 
     def get_cwmp_setresponse_status(self, setparametervaluesresponse):
         """ retrieve the status from a setparametervaluesresponse node """
@@ -117,3 +125,4 @@ class Soap:
         if statusnode is None:
             return None
         return statusnode.text
+

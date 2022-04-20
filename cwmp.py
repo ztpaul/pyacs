@@ -28,22 +28,6 @@ class Cwmp:
         self.mConnectionRequestURL = ''
         self.pending_method = 'SetParameterValues' # run SetParameterValues to set default values for each CPE
         self.pending_arg = 'common' #arguments related to pending_method, can be a TR098/TR181 path or config section
-    
-    def set_cache(self, cache):
-        self.mCache = cache
-
-    def send_configuration(self, sn, push):
-        """ write to the 'database' if this sn needs a configuration """
-        self.mCache.set(sn, push)
-
-    def need_configuration(self, sn):
-        """ does this device needs a new configuration? """
-        need = self.mCache.get(sn)
-        if need is None:
-            self.mCache.set(sn, True)
-            return True
-        return need
-
 
 
     def generate_config(self):
@@ -88,19 +72,19 @@ class Cwmp:
 
     def handle_Inform(self, tree, node):
         """ handle a device Inform request """
-        cwmpid = Cwmp.mSoap.get_cwmp_id(tree)
+        self.id = Cwmp.mSoap.get_cwmp_id(tree)
         sn = Cwmp.mSoap.get_cwmp_inform_sn(node)
         events = Cwmp.mSoap.get_cwmp_inform_events(node)
 
-        self.mConnectionRequestURL = Cwmp.mSoap.get_cwmp_inform_value(node, 'ManagementServer.ConnectionRequestURL')
+        self.mConnectionRequestURL = Cwmp.mSoap.get_cwmp_value(node, 'ManagementServer.ConnectionRequestURL')
 
         session['sn'] = sn
         if '0 BOOTSTRAP' in events or '1 BOOT' in events:
             self.send_configuration(sn, True)
             logging.error("Device %s booted", sn)
 
-        logging.info("Receive Inform form Device %s. cwmpipd=%s. Events=%s", sn, cwmpid, ", ".join(events))
-        response = make_response(Cwmp.m_common_header+render_template('cwmp/InformResponse.jinja.xml', cwmpid=cwmpid))
+        logging.info("Receive Inform form Device %s. cwmpipd=%s. Events=%s", sn, self.id, ", ".join(events))
+        response = make_response(Cwmp.m_common_header+render_template('cwmp/InformResponse.jinja.xml', cwmpid=self.id))
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
         return response
 
@@ -115,15 +99,25 @@ class Cwmp:
     # return: response to CPE
     #########################################################################################################
     def handle_GetRPCMethods(self, tree):
-        cwmpid = Cwmp.mSoap.get_cwmp_id(tree)
+        self.id = Cwmp.mSoap.get_cwmp_id(tree)
 
         logging.info("Receive GetRPCMethods")
-        response = make_response(Cwmp.m_common_header+render_template('cwmp/GetRPCMethodsResponse.jinja.xml', cwmpid=cwmpid, method_list=Soap.m_methods, length=len(Soap.m_methods)))
+        response = make_response(Cwmp.m_common_header+render_template('cwmp/GetRPCMethodsResponse.jinja.xml', cwmpid=self.id))
+        response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
+        return response
+
+    def make_GetParameterValues_response(self):
+        """ request a GetParameterValues """
+        logging.info(f"Device {session['sn']} GetParameterValues")
+
+        params = {self.pending_arg}
+        response = make_response(Cwmp.m_common_header+render_template('cwmp/GetParameterValues.jinja.xml',
+                                                cwmpid=self.id, params=params, length=len(params)))
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
         return response
 
     def make_SetParameterValues_response(self):
-        """ request a setparams """
+        """ request a SetParameterValues """
         # e.g. params are {name: "arfcn", xmltype: "xsd:int", value: "23"}
         sn = session['sn']
 
@@ -131,14 +125,22 @@ class Cwmp:
         params = self.generate_config()
 
         # keep track if we already sent out a response
-        logging.info("Device %s sending configuration", sn)
-        self.send_configuration(sn, True)
+        logging.info(f"Device {sn} SetParameterValues, params={params}")
         response = make_response(Cwmp.m_common_header+render_template('cwmp/SetParameterValues.jinja.xml',
-                                                cwmpid=23, params=params, length_params=len(params)))
+                                                cwmpid=self.id, params=params, length_params=len(params)))
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
         return response
 
-    def handle_SetParameterValuesResponse(self, tree, node):
+    def handle_GetParameterValuesResponse(self, node):
+        parameterDict = Cwmp.mSoap.get_cwmp_all_value(node)
+        for i in parameterDict:
+            logging.warning(f"{i}={parameterDict[i]}")
+
+        response = make_response()
+        response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
+        return response
+
+    def handle_SetParameterValuesResponse(self, node):
         """ handle the setparams response """
         sn = session['sn']
         status = Cwmp.mSoap.get_cwmp_setresponse_status(node)
@@ -149,7 +151,7 @@ class Cwmp:
                 logging.info("Device %s applied configuration changes but require a reboot", sn)
             else:
                 logging.error("Device %s returned unknown status value (%s)", sn)
-        self.send_configuration(sn, False)
+
         response = make_response()
         response.headers['Content-Type'] = 'text/xml; charset="utf-8"'
         return response
@@ -157,14 +159,25 @@ class Cwmp:
     def handle_POST(self, request):
         # when the client doesn't send us any data, it's ready for our request
         if not request.content_length:
+            response = None
+
             if 'sn' not in session:
                 logging.error("Received an empty request from an unknown device. Can not generate configuration!")
                 return make_response()
-            if self.need_configuration(session['sn']):
-                return self.make_SetParameterValues_response()
+            
+            match self.pending_method:
+                case 'GetParameterValues':
+                    response = self.make_GetParameterValues_response()
+                case 'SetParameterValues':
+                    response = self.make_SetParameterValues_response()
 
-            logging.info("Device %s already configured", session['sn'])
-            return make_response()
+            self.pending_method = None
+            self.pending_arg = None
+
+            if response:
+                return response
+            else:
+                return make_response()
 
         # some request content data
         try:
@@ -183,10 +196,17 @@ class Cwmp:
                 return self.handle_GetRPCMethods(tree)
             case "Inform":
                 return self.handle_Inform(tree, node)
+            case "GetParameterValuesResponse":
+                return self.handle_GetParameterValuesResponse(node)
             case "SetParameterValuesResponse":
-                return self.handle_SetParameterValuesResponse(tree, node)
+                return self.handle_SetParameterValuesResponse(node)
 
-    def send_GET(self):
+    def send_GET(self, method, arg):
+        # if there is a pending method on the CPE, do nothing
+        if self.pending_method:
+            logging.error(f"pending_method={self.pending_method}, pending_arg={self.pending_arg}")
+            return
+
         response = requests.get(self.mConnectionRequestURL)
         logging.info(f"code={response.status_code}, headers={response.headers}")
         if response.status_code == 401:
@@ -201,3 +221,7 @@ class Cwmp:
 
             logging.info(f"code={response.status_code}, headers={response.headers}")
 
+        # According to TR069, CPE responsing 200 or 204 indicates "Connection Request" is successfully authenticated
+        if response.status_code==200 or response.status_code==204:
+            self.pending_method = method
+            self.pending_arg = arg

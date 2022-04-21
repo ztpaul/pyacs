@@ -1,5 +1,5 @@
 [[source]]
-url = "https://pypi.douban.com/simple"
+url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
@@ -7,7 +7,7 @@ name = "pypi"
 flask = "*"
 flask-kvsession = "*"
 flask-caching = "*"
-flask_httpauth = "*"
+flask_httpauth = "==4.6.0"
 waitress = "*"
 coloredlogs = "*"
 requests = "*"

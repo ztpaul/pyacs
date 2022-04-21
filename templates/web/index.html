@@ -1,8 +1,10 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <script type = "text/javascript" src = "index.js" ></script>
-        <link rel="stylesheet" type="text/css" href="index.css">
+        <script type = "text/javascript" src = "{{ url_for('static', filename = 'index.js') }}" ></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+        <!-- <script type = "text/javascript" src = "index.js" ></script>
+        <link rel="stylesheet" type="text/css" href="index.css"> -->
     </head>
 
     <body>

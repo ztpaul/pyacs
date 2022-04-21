@@ -80,7 +80,6 @@ class Cwmp:
 
         session['sn'] = sn
         if '0 BOOTSTRAP' in events or '1 BOOT' in events:
-            self.send_configuration(sn, True)
             logging.error("Device %s booted", sn)
 
         logging.info("Receive Inform form Device %s. cwmpipd=%s. Events=%s", sn, self.id, ", ".join(events))
